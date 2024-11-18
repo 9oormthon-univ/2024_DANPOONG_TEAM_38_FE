@@ -1,25 +1,17 @@
-import React, {useEffect, useState} from 'react';
+import {useState} from "react";
 import {useLocation, useNavigate} from "react-router-dom";
 import LoginLogo from '../../../assets/login/LoginLogo.png';
 import KakaoLogo from '../../../assets/login/KakaoLogo.png';
 import {ReactComponent as FindUserIcon} from "../../../assets/login/FindUserIcon.svg";
 import {ReactComponent as SignUpIcon} from "../../../assets/login/SignUpIcon.svg";
+import KakaoLoading from "./KakaoLoading";
 
 const LoginType = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const category = location.state;
 
-    const KAKAO_LOGIN_URL = `https://kauth.kakao.com/oauth/authorize?client_id=${process.env.REACT_APP_KAKAO_REST_API_KEY}&redirect_uri=http://localhost:3000/login&response_type=code`;
-    const [authorizationCode, setAuthorizationCode] = useState(null);
-
-    useEffect(() => {
-        const code = new URL(window.location.href).searchParams.get("code");
-        if (code) {
-            setAuthorizationCode(code);
-            console.log(code);
-        }
-    }, []);
+    const KAKAO_LOGIN_URL = `https://kauth.kakao.com/oauth/authorize?client_id=${process.env.REACT_APP_KAKAO_REST_API_KEY}&redirect_uri=http://localhost:3000/login/callback&response_type=code`;
 
     const clickKakaoLogin = () => {
         window.location.href = KAKAO_LOGIN_URL;
