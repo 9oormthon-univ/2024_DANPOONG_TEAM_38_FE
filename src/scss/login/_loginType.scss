@@ -1,0 +1,65 @@
+.loginType-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .loginType-title {
+    font-weight: 400;
+    font-size: 2.8125rem;
+    margin: 5rem 0 3rem 0;
+  }
+
+  .loginType-button-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: 6rem;
+
+    .login-logo-image {
+      max-width: 450px;
+    }
+
+    .loginType-user-button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem;
+      border-radius: 12px;
+      background-color: #FEE500;
+      font-weight: 500;
+      font-size: 1.625rem;
+      width: 585px;
+
+      img {
+        max-width: 36px;
+      }
+    }
+
+    // 기업 css
+    .loginType-company-button {
+      background-color: #00C78C;
+      color: white;
+      font-size: 1.5rem;
+      font-weight: 700;
+      border-radius: 10px;
+      width: 585px;
+      padding: 0.75rem 0;
+    }
+
+    .login-company-input-text {
+      border: 1px solid #D9D9D9;
+      border-radius: 10px;
+      font-weight: 500;
+      font-size: 1.5rem;
+      padding: 1rem 1.25rem;
+    }
+
+    .login-company-a {
+      display: flex;
+      font-size: 1.25rem;
+      color: #7F7F7F;
+      font-weight: 400;
+      column-gap: 0.125rem;
+    }
+  }
+}
