@@ -1,0 +1,28 @@
+.welcome-container {
+  width: 1440px;
+  .welcome-container-box {
+    margin-top: 90px;
+    height: 210px;
+    background: #00c78c;
+    .welcome-title {
+      padding-top: 57px;
+      font-family: Roboto;
+      font-size: 40px;
+      font-weight: bold;
+      line-height: 48px;
+      text-align: center;
+
+      color: #ffffff;
+    }
+    .welcome-content {
+      padding-top: 24px;
+      font-family: Roboto;
+      font-size: 16px;
+      font-weight: normal;
+      line-height: 24px;
+      text-align: center;
+      letter-spacing: 0em;
+      color: #ffffff;
+    }
+  }
+}

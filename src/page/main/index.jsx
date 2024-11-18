@@ -5,6 +5,8 @@ import Summation from "./components/summation";
 import Category from "./components/category";
 import ProjectMore from "./components/projectmore";
 import CompanyRank from "./components/companyrank";
+import Welcome from "./components/detail/Welcome";
+import Upload from "./components/detail/Upload";
 const Main = () => {
   return (
     <div className="main-container">
@@ -14,6 +16,8 @@ const Main = () => {
       <Category />
       <ProjectMore />
       <CompanyRank />
+      <Welcome />
+      <Upload />
     </div>
   );
 };

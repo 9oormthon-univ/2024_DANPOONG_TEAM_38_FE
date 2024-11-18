@@ -1,0 +1,25 @@
+.upload-container {
+  width: 1440px;
+  height: 380px;
+  .upload-title {
+    margin-top: 92px;
+    margin-left: 110px;
+    font-size: 35px;
+    font-weight: 700;
+    line-height: 36px;
+    color: #000000;
+  }
+  .upload-content {
+    margin-top: 18px;
+    margin-left: 110px;
+    font-size: 18px;
+    color: #000000;
+  }
+  .upload-guide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 42px;
+    gap: 22px;
+  }
+}

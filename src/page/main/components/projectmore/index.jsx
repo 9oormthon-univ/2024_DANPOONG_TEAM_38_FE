@@ -24,9 +24,11 @@ const ProjectMore = () => {
           btn={"프로젝트 더보기"}
           onClick={detailHandler}
         />
-        <Preview title={" 피부 건강을 위한 기초 스킨케어 나이트루틴"} />
-        <Preview title={" 피부 건강을 위한 기초 스킨케어 나이트루틴"} />
-        <Preview title={" 피부 건강을 위한 기초 스킨케어 나이트루틴"} />
+        <div className="more-preview-container">
+          <Preview title={" 피부 건강을 위한 기초 스킨케어 나이트루틴"} />
+          <Preview title={" 피부 건강을 위한 기초 스킨케어 나이트루틴"} />
+          <Preview title={" 피부 건강을 위한 기초 스킨케어 나이트루틴"} />
+        </div>
       </div>
     </div>
   );
