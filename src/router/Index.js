@@ -5,6 +5,7 @@ const Layout = lazy(() => import("../layout/Layout"));
 const Loading = lazy(() => import("../component/Loading"));
 
 const Login = lazy(() => import("../page/login/Login"));
+const KakaoLoading = lazy(() => import("../page/login/components/KakaoLoading"));
 const LoginType = lazy(() => import("../page/login/components/LoginType"));
 const Signup = lazy(() => import("../page/signup/Signup"));
 const SignupCompany = lazy(() => import("../page/signup/components/SignupCompany"));
@@ -25,6 +26,14 @@ const router = createBrowserRouter([
           <Suspense fallback={<Loading />}>
             <Login />
           </Suspense>
+        ),
+      },
+      {
+        path: "login/callback",
+        element: (
+            <Suspense fallback={<Loading />}>
+              <KakaoLoading />
+            </Suspense>
         ),
       },
       {
