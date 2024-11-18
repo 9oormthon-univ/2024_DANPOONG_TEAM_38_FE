@@ -7,10 +7,12 @@ import ProjectMore from "./components/projectmore";
 import CompanyRank from "./components/companyrank";
 import Welcome from "./components/detail/Welcome";
 import Upload from "./components/detail/Upload";
+import Recent from "./Recent";
 const Main = () => {
   return (
     <div className="main-container">
       <Outlet />
+      <Recent />
       <Search />
       <Summation />
       <Category />

@@ -1,7 +1,7 @@
 .rank-container {
   display: flex;
   width: 1440px;
-  height: 400px;
+  height: 500px;
   margin-top: 59px;
   background: #effffa;
   .rank-container-box {
@@ -34,6 +34,10 @@
         }
       }
       .rank-preview-next-btn {
+        display: flex;
+        gap: 62px;
+        margin-left: 830px;
+        margin-top: 31px;
       }
     }
   }
