@@ -8,7 +8,7 @@ const Layout = () => {
     const location = useLocation();
     const path = location.pathname;
 
-    const hideFooterPaths = ["/login", "/login/user", "/login/company", "/signup"];
+    const hideFooterPaths = ["/login", "/login/user", "/login/company", "/signup","/signup/company"];
 
     const showFooter = !hideFooterPaths.includes(path);
 

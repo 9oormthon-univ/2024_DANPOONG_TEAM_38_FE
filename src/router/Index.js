@@ -7,6 +7,7 @@ const Loading = lazy(() => import("../component/Loading"));
 const Login = lazy(() => import("../page/login/Login"));
 const LoginType = lazy(() => import("../page/login/components/LoginType"));
 const Signup = lazy(() => import("../page/signup/Signup"));
+const SignupCompany = lazy(() => import("../page/signup/components/SignupCompany"));
 const Profile = lazy(() => import("../page/profile"));
 const Main = lazy(() => import("../page/main"));
 const Introduction = lazy(() => import("../page/introduction"));
@@ -39,6 +40,14 @@ const router = createBrowserRouter([
         element: (
             <Suspense fallback={<Loading />}>
               <Signup />
+            </Suspense>
+        ),
+      },
+      {
+        path: "signup/company",
+        element: (
+            <Suspense fallback={<Loading />}>
+              <SignupCompany />
             </Suspense>
         ),
       },

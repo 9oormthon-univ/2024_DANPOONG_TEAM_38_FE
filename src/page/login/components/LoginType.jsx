@@ -1,11 +1,12 @@
 import React, {useEffect, useState} from 'react';
-import {useLocation} from "react-router-dom";
+import {useLocation, useNavigate} from "react-router-dom";
 import LoginLogo from '../../../assets/login/LoginLogo.png';
 import KakaoLogo from '../../../assets/login/KakaoLogo.png';
 import {ReactComponent as FindUserIcon} from "../../../assets/login/FindUserIcon.svg";
 import {ReactComponent as SignUpIcon} from "../../../assets/login/SignUpIcon.svg";
 
 const LoginType = () => {
+    const navigate = useNavigate();
     const location = useLocation();
     const category = location.state;
 
@@ -33,12 +34,18 @@ const LoginType = () => {
                 </div>
                 <div className='flex flex-col gap-y-5'>
                     {category === 'user' ?
-                        <button className='loginType-user-button' onClick={clickKakaoLogin}>
-                            <div>
-                                <img src={KakaoLogo} alt=""/>
-                            </div>
-                            <span>카카오로 시작하기</span>
-                        </button>
+                        <>
+                            <button className='loginType-user-button' onClick={clickKakaoLogin}>
+                                <div>
+                                    <img src={KakaoLogo} alt=""/>
+                                </div>
+                                <span>카카오로 시작하기</span>
+                            </button>
+                            {/*<button className='loginType-user-button' onClick={()=>navigate('/signup')}>*/}
+                            {/*    <SignUpIcon />*/}
+                            {/*    <span>회원가입</span>*/}
+                            {/*</button>*/}
+                        </>
                         :
                         <>
                             <input type="text" placeholder='이메일' className='login-company-input-text'/>
@@ -47,7 +54,7 @@ const LoginType = () => {
                                 로그인
                             </button>
                             <div className='flex ml-auto gap-x-7'>
-                                <a href="" className='login-company-a'>
+                                <a href="/signup" className='login-company-a'>
                                     <SignUpIcon/>
                                     <span>회원가입</span>
                                 </a>
