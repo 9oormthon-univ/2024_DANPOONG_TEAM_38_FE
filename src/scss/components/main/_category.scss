@@ -1,0 +1,17 @@
+.category-container {
+  width: 100%;
+  height: 82px;
+  display: flex;
+
+  align-items: center;
+
+  margin-top: 40px;
+  .category-container-box {
+    width: 1342px;
+    display: flex;
+    margin-left: 112px;
+    gap: 44px;
+    .category-btn {
+    }
+  }
+}

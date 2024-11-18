@@ -1,0 +1,116 @@
+@import url("https://fonts.googleapis.com/css2?family=Bruno+Ace&display=swap");
+
+.summation-container {
+  width: 100%;
+  height: 400px;
+  .summation-container-box {
+    width: 1342px;
+    height: 396px;
+    display: flex;
+    margin-top: 32px;
+    .summation-img {
+      width: 865px;
+      height: 396px;
+    }
+    .summation-alarm-container {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      .summation-projects-num-container {
+        display: flex;
+        width: 445px;
+        height: 190px;
+        margin-left: 20px;
+        border-radius: 20px;
+        border: 1px solid black;
+        background: #ffffff;
+        box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
+        .summation-today-projects {
+          width: 50%;
+          .summation-title {
+            padding-top: 26px;
+            padding-left: 18px;
+            font-size: 18px;
+          }
+          .summation-num-container {
+            display: flex;
+            padding-top: 64px;
+
+            font-family: "Bruno Ace", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+            font-size: 50px;
+            .summation-num {
+              width: 180px;
+              height: 50px;
+              text-align: right;
+            }
+            .summation-unit {
+              font-size: 20px;
+              margin-top: 30px;
+              margin-left: 4px;
+            }
+          }
+        }
+        .summation-line {
+          margin-top: 24px;
+        }
+        .summation-projects-stack {
+        }
+      }
+      .summation-alarm-box {
+        width: 445px;
+        height: 190px;
+        margin-left: 20px;
+        border-radius: 20px;
+
+        background: #bbffdd;
+        .summation-alarm-heaer {
+          display: flex;
+          align-items: center;
+          gap: 13px;
+          margin-top: 23px;
+          margin-left: 18px;
+          font-size: 20px;
+          font-weight: 600;
+          .summation-alarm-icon {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 49px;
+            height: 49px;
+            background: #00c78c;
+            border-radius: 100px;
+          }
+        }
+        .summation-alarm-content {
+          display: flex;
+
+          margin-top: 23px;
+          padding-left: 20px;
+          width: 100%;
+          height: 22px;
+          .summation-alarm-li {
+            width: 285px;
+            height: auto;
+          }
+          .summation-alarm-li-day {
+            font-size: 16px;
+            color: #696969;
+          }
+        }
+        .summation-alarm-more {
+          display: flex;
+          margin-left: 360px;
+          margin-top: 32px;
+          justify-content: center;
+          text-align: center;
+
+          .summation-alarm-more-icon {
+            padding-left: 5px;
+          }
+        }
+      }
+    }
+  }
+}
