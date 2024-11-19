@@ -12,6 +12,7 @@ const CompanyRank = () => {
   return (
     <div className="rank-container">
       <div className="rank-container-box">
+        {/* 기업 랭킹 조회 API */}
         <MoreDetail
           title={"Company Ranking"}
           content={"뜨거운 관심을 받은 상위 기업들을 확인해보세요!"}

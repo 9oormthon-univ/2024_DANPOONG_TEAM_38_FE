@@ -11,10 +11,13 @@ const Alarm = () => {
     <div className="summation-alarm-container">
       <div className="summation-projects-num-container">
         {/* 프로젝트 수 연동 필요 */}
+        {/* 신규 등록 조희 API */}
         <AlarmNum title={"오늘 신규 프로젝트"} num={"72"} />
         <div className="summation-line">
           <Line />
         </div>
+
+        {/* 누적 등록 조회 API */}
         <AlarmNum title={"누적 프로젝트"} num={"6,999"} />
       </div>
       <div className="summation-alarm-box">

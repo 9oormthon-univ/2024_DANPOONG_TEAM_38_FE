@@ -1,0 +1,237 @@
+.pj-detail-container {
+  width: 1440px;
+  height: 1000px;
+  .pj-detail-main-container {
+    margin-top: 30px;
+    display: flex;
+    .pj-detail-show-container {
+      width: 50%;
+      display: flex;
+      flex-direction: column;
+      .pj-detail-show-title {
+        margin-left: 107px;
+        font-size: 35px;
+        font-weight: 700;
+        color: #000000;
+      }
+      .pj-detail-show-img-slice {
+        margin-top: 5px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 17px;
+        .pj-detail-show-left-btn,
+        .pj-detail-show-right-btn {
+          cursor: pointer;
+          width: 50px;
+          height: 50px;
+        }
+        .pj-detail-show-img-section {
+          width: 506px;
+          height: 653px;
+          // 연동후 배경 지우기
+          background: gray;
+          .pj-detail-show-image {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: cover;
+          }
+        }
+      }
+      .pj-detail-show-sub-title {
+        margin-left: 107px;
+        margin-top: 31px;
+      }
+    }
+    .pj-detail-boost-container {
+      width: 50%;
+      display: flex;
+      flex-direction: column;
+      .pj-detail-boost-banner {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        width: 506px;
+        height: 75px;
+        border-radius: 10px;
+        opacity: 1;
+        background: #f5f5f7;
+        font-weight: 400;
+        font-size: 23px;
+        font-weight: 500;
+        .pj-detail-boost-num {
+          color: #ff5c2f;
+        }
+      }
+      .pj-detail-boost-main {
+        margin-top: 14px;
+        border-radius: 10px;
+        opacity: 1;
+        box-sizing: border-box;
+        border: 1px solid #d9d9d9;
+        width: 506px;
+        height: 736px;
+        .pj-detail-boost-main-title-container {
+          width: 100%;
+          height: 95px;
+          display: flex;
+          .pj-detail-boost-main-title {
+            margin-top: 19px;
+            margin-left: 18px;
+
+            .pj-detail-boost-main-title-h1 {
+              font-size: 23px;
+              font-weight: 700;
+              letter-spacing: 0em;
+              color: #000000;
+            }
+            .pj-detail-boost-main-title-sub {
+              font-size: 15px;
+              letter-spacing: 0em;
+              color: #7f7f7f;
+            }
+          }
+          .pj-detail-boost-main-see-all {
+            margin-top: 20px;
+            margin-left: 170px;
+            text-underline-offset: 5px;
+            text-decoration: underline;
+            text-decoration-color: #424242;
+            font-size: 15px;
+            text-align: right;
+            letter-spacing: 0em;
+            color: #424242;
+          }
+        }
+        .pj-detail-boost-ranking-container {
+          width: 100%;
+          height: 300px;
+
+          .pj-detail-boost-rank-container {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            height: 85px;
+            margin-bottom: 20px;
+            .pj-detail-boost-rank-num {
+              width: 70px;
+              height: 85px;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+            }
+            .pj-detail-boost-rank-img {
+              width: 68px;
+              height: 68px;
+              background: gray;
+              border-radius: 100px;
+            }
+            .pj-detail-boost-rank-content {
+              margin-left: 15px;
+              display: flex;
+              flex-direction: column;
+              .pj-detail-boost-rank-name {
+                font-size: 18px;
+                letter-spacing: 0em;
+                color: #000000;
+                font-weight: 700;
+              }
+              .pj-detail-boost-rank-won-box {
+                font-size: 15px;
+                display: flex;
+                font-weight: 600;
+                color: #424242;
+                .pj-detail-boost-rank-won {
+                  color: #00c78c;
+                }
+              }
+            }
+          }
+
+          .pj-line {
+            margin: 0 auto;
+            opacity: 1;
+            border: 0.5px solid #d9d9d9;
+            width: 474px;
+            height: 1px;
+          }
+          .pj-detail-boost-rank-Amount-won-box {
+            width: 474px;
+            height: 25%;
+            display: flex;
+            margin: 0 auto;
+            padding-top: 10px;
+            .pj-detail-boost-rank-Amount-won-title {
+              width: 86px;
+              font-size: 23px;
+              font-weight: 700;
+              padding-top: 10px;
+            }
+            .pj-detail-boost-rank-Amount-won-content {
+              width: 388px;
+              display: flex;
+              align-items: center;
+
+              .pj-detail-boost-rank-Amount-won-content-num {
+                width: 100%;
+
+                display: flex;
+                flex-direction: column;
+
+                .pj-detail-boost-rank-Amount-won-content-num-won {
+                  font-family: "Bruno Ace", sans-serif;
+                  width: 100%;
+                  display: flex;
+                  margin-left: auto;
+                  justify-content: flex-end;
+                  align-items: center;
+                  color: #00c78c;
+                  font-weight: 400;
+                  font-size: 25px;
+
+                  .pj-detail-boost-rank-Amount-won-content-num-won-unit {
+                    color: #000000;
+                    font-size: 18px;
+                  }
+                }
+                .pj-detail-boost-rank-Amount-won-content-percent {
+                  text-align: right;
+                }
+              }
+            }
+          }
+          .pj-detail-boost-rank-period-box {
+            width: 474px;
+            height: 25%;
+            display: flex;
+            align-items: center;
+            margin: 0 auto;
+            .pj-detail-boost-rank-period-title {
+              width: 86px;
+              font-size: 23px;
+              font-weight: 700;
+            }
+            .pj-detail-boost-rank-period-content {
+              font-family: "Bruno Ace", sans-serif;
+              width: 388px;
+              display: flex;
+              margin-left: auto;
+              justify-content: flex-end;
+              display: flex;
+              align-items: center;
+              color: #00c78c;
+              font-weight: 400;
+              font-size: 25px;
+
+              .pj-detail-boost-rank-period-content-day {
+                color: #000000;
+                font-size: 18px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

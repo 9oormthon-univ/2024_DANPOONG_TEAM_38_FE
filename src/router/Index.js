@@ -11,6 +11,7 @@ const Introduction = lazy(() => import("../page/introduction"));
 const Event = lazy(() => import("../page/showevent"));
 const List = lazy(() => import("../page/project/list"));
 const Upload = lazy(() => import("../page/project/upload"));
+const Detail = lazy(() => import("../page/project/detail"));
 
 const router = createBrowserRouter([
   {
@@ -53,6 +54,14 @@ const router = createBrowserRouter([
         element: (
           <Suspense fallback={<Loading />}>
             <List />
+          </Suspense>
+        ),
+      },
+      {
+        path: "detail",
+        element: (
+          <Suspense fallback={<Loading />}>
+            <Detail />
           </Suspense>
         ),
       },

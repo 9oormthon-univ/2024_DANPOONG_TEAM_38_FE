@@ -9,6 +9,7 @@ const Search = () => {
         <input className="search-input-container" />
         <button className="search-input-btn">
           {/* 해당 버튼 눌렀을때 유저랑 프로젝트 찾는 작업 필요 */}
+          {/* 프로젝트 조회 API 연동 */}
           <GoSearch />
         </button>
       </form>
