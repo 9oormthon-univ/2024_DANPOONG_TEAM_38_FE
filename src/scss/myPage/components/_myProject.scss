@@ -1,0 +1,91 @@
+.myProject-container {
+
+  .myProject-box {
+    display: flex;
+    border-radius: 30px;
+    overflow: hidden;
+    box-shadow: 0 0 4px 0 #00000033;
+    margin-bottom: 2rem;
+
+    .myProject-image {
+      min-width: 445px;
+      max-width: 445px;
+      max-height: 373px;
+    }
+
+    .myProject-content {
+      padding: 2.625rem 1.375rem 1.125rem 2.375rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      .myProject-date {
+        font-weight: 400;
+        color: #424242;
+      }
+
+      .myProject-title {
+        font-size: 1.875rem;
+        font-weight: 700;
+        width: 70%;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .myProject-progress {
+        margin: 5rem 0 0 0;
+        position: relative;
+        height: 14px;
+        border-radius: 100px;
+        background-color: #C5EBE0;
+
+        .progress-steps {
+          position: relative;
+          z-index: 2;
+          top: -10px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          font-weight: 600;
+
+          .step {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background-color: #C5EBE0;
+            color: #00C78C;
+          }
+
+          .step.active {
+            background-color: #00C78C;
+            color: white;
+          }
+        }
+
+        .myProject-progress-gauge {
+          border-radius: 100px;
+          position: absolute;
+          transform: translateY(-50%);
+          top: 50%;
+          height: 100%;
+          background-color: #00C78C;
+          z-index: 1;
+        }
+      }
+
+      .myProject-button {
+        border: 1px solid #D9D9D9;
+        font-size: 1.125rem;
+        border-radius: 68px;
+        font-weight: 400;
+        padding: 0.5rem 2rem;
+      }
+    }
+  }
+}

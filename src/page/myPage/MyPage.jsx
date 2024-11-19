@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import MyPageUserImage from '../../assets/myPage/MyPageUserImage.jpg';
 import {ReactComponent as EditIcon} from "../../assets/myPage/EditIcon.svg";
 import {ReactComponent as BlogLinkIcon} from "../../assets/myPage/BlogLinkIcon.svg";
+import MyProject from "./components/MyProject";
 
 const menuItems = [
     {key: 'myProject', label: '나의 프로젝트'},
@@ -46,7 +47,7 @@ const MyPage = () => {
                     </div>
                 </div>
             </section>
-            <section className='mt-28 flex gap-x-12'>
+            <section className='mt-28 mb-16 flex gap-x-12'>
                 {menuItems.map((item) => (
                     <button
                         key={item.key}
@@ -58,7 +59,7 @@ const MyPage = () => {
                 ))}
             </section>
             <section>
-                {menu === 'myProject' && <div>나의 프로젝트 내용</div>}
+                {menu === 'myProject' && <MyProject/>}
                 {menu === 'interestProject' && <div>관심 프로젝트 내용</div>}
                 {menu === 'supportProject' && <div>후원 프로젝트 내용</div>}
                 {menu === 'myReview' && <div>내 후기 내용</div>}
