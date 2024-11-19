@@ -4,7 +4,9 @@ import { createBrowserRouter } from "react-router-dom";
 const Layout = lazy(() => import("../layout/Layout"));
 const Loading = lazy(() => import("../component/Loading"));
 
-const Login = lazy(() => import("../page/login"));
+const Login = lazy(() => import("../page/login/Login"));
+const LoginType = lazy(() => import("../page/login/components/LoginType"));
+const Signup = lazy(() => import("../page/signup/Signup"));
 const Profile = lazy(() => import("../page/profile"));
 const Main = lazy(() => import("../page/main"));
 const Introduction = lazy(() => import("../page/introduction"));
@@ -23,6 +25,22 @@ const router = createBrowserRouter([
           <Suspense fallback={<Loading />}>
             <Login />
           </Suspense>
+        ),
+      },
+      {
+        path: "login/:type",
+        element: (
+            <Suspense fallback={<Loading />}>
+              <LoginType />
+            </Suspense>
+        ),
+      },
+      {
+        path: "signup",
+        element: (
+            <Suspense fallback={<Loading />}>
+              <Signup />
+            </Suspense>
         ),
       },
       {
