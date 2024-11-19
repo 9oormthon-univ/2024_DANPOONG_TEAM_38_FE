@@ -38,8 +38,8 @@ const MyPage = () => {
                             </div>
                         </div>
                     </div>
-                    <div className='myPage-edit'>
-                        <a href="" className='flex gap-x-3 items-center'>
+                    <div className='myPage-edit-button'>
+                        <a href="/myPage/edit" className='flex gap-x-3 items-center'>
                             <EditIcon/>
                             <span>프로필 편집</span>
                         </a>
