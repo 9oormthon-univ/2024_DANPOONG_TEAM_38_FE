@@ -3,12 +3,14 @@ import MyPageUserImage from '../../assets/myPage/MyPageUserImage.jpg';
 import {ReactComponent as EditIcon} from "../../assets/myPage/EditIcon.svg";
 import {ReactComponent as BlogLinkIcon} from "../../assets/myPage/BlogLinkIcon.svg";
 import MyProject from "./components/MyProject";
+import Proposal from "./components/Proposal";
 
 const menuItems = [
     {key: 'myProject', label: '나의 프로젝트'},
     {key: 'interestProject', label: '관심 프로젝트'},
     {key: 'supportProject', label: '후원 프로젝트'},
-    {key: 'myReview', label: '내 후기'}
+    {key: 'myReview', label: '내 후기'},
+    {key: 'proposal', label: '받은 제안서'},
 ];
 
 const MyPage = () => {
@@ -63,6 +65,7 @@ const MyPage = () => {
                 {menu === 'interestProject' && <div>관심 프로젝트 내용</div>}
                 {menu === 'supportProject' && <div>후원 프로젝트 내용</div>}
                 {menu === 'myReview' && <div>내 후기 내용</div>}
+                {menu === 'proposal' && <Proposal/>}
             </section>
         </div>
     );
