@@ -10,7 +10,7 @@ const ProjectMore = () => {
 
   const detailHandler = () => {
     // 작업하기 위해 경로 수정 추후 프로젝트 리스트 ui 구축시 /list 로 변경 필요 라우터도
-    navigate("/detail");
+    navigate("/list");
   };
 
   return (
