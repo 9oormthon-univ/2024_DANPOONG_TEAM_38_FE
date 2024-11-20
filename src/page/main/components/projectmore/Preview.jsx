@@ -1,22 +1,37 @@
 import React from "react";
 
-const Preview = ({ title, name, place, onClick }) => {
+const Preview = ({
+  title,
+  image,
+  category,
+  region,
+  progressPeriod,
+  progressRate,
+  achievedAmount,
+  onClick,
+}) => {
   return (
-    // 프로젝트 preview api 연동후 수정 필요 list에서 넘어온 경우 달성 퍼센트랑 마감 날짜 필요
     <div className="preview-container" onClick={onClick}>
-      {/* 이미지 연동 필요 */}
-      <div className="preview-img"></div>
+      {/* 이미지 URL을 <img> 태그로 표시 */}
+      <div className="preview-img-container">
+        <div className="preview-img-region">{region}</div>
+        <img src={image} alt={title} className="preview-img" />
+      </div>
       <div className="preview-content-container">
-        <div className="preview-content-title">
-          {title}
+        <div className="preview-content-title-container">
+          <div className="preview-content-title">
+            {title}
 
-          {/* 날짜 연동 필요 */}
-          <div className="preview-content-day">2024.11.06-2024.11.24</div>
+            <div className="preview-content-day">{progressPeriod}</div>
+          </div>
+          <div className="preview-content-icon">{category}</div>
         </div>
-        <div className="preview-content-icon"></div>
-
         {/* 진행상황 연동 필요 */}
-        <div className="preview-content-load"></div>
+        <div className="preivew-graph"> 그래프 연동 필요</div>
+        <div className="preview-content-load">
+          <div className="preview-progressRate">{progressRate}</div>
+          <div className="preview-achievedAmount">{achievedAmount}원 달성</div>
+        </div>
       </div>
     </div>
   );

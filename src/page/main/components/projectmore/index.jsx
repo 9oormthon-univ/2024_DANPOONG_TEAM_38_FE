@@ -1,16 +1,29 @@
-import React from "react";
-
-import { ReactComponent as Go } from "../../../../assets/component/gomore.svg";
+import React, { useEffect, useState } from "react";
 import MoreDetail from "../../MoreDetail";
 import { useNavigate } from "react-router-dom";
 import Preview from "./Preview";
+import GetNewProject from "../../../../apis/project/GetNewProject";
 
 const ProjectMore = () => {
   const navigate = useNavigate();
+  const [newProjects, setNewProjects] = useState([]); // 초기값을 빈 배열로 설정
 
-  const detailHandler = () => {
-    // 작업하기 위해 경로 수정 추후 프로젝트 리스트 ui 구축시 /list 로 변경 필요 라우터도
-    navigate("/list");
+  const fetchNewProject = async () => {
+    try {
+      const newProject = await GetNewProject();
+      setNewProjects(newProject.result); // 'result'를 사용하여 프로젝트 데이터를 설정
+    } catch (error) {
+      console.error("프로젝트 수 조회 실패:", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchNewProject();
+  }, []); // 의존성 배열에 빈 배열을 넣어 컴포넌트가 마운트될 때 한 번만 실행되게 함
+
+  const detailHandler = (project) => {
+    // 프로젝트 상세페이지로 이동하며, 해당 프로젝트 정보 전달
+    navigate("/detail", { state: { project } });
   };
 
   return (
@@ -24,12 +37,27 @@ const ProjectMore = () => {
             "신규 등록된 프로젝트를 확인하고, 원하는 프로젝트에 후원해보세요!"
           }
           btn={"프로젝트 더보기"}
-          onClick={detailHandler}
+          onClick={() => navigate("/list")} // 프로젝트 더보기 버튼 클릭 시 /list로 이동
         />
         <div className="more-preview-container">
-          <Preview title={" 피부 건강을 위한 기초 스킨케어 나이트루틴"} />
-          <Preview title={" 피부 건강을 위한 기초 스킨케어 나이트루틴"} />
-          <Preview title={" 피부 건강을 위한 기초 스킨케어 나이트루틴"} />
+          {/* newProjects가 존재하는 경우만 렌더링 */}
+          {newProjects.length > 0 ? (
+            newProjects.map((project) => (
+              <Preview
+                key={project.id}
+                image={project.image}
+                title={project.mainTitle}
+                category={project.category}
+                region={project.region}
+                progressPeriod={project.progressPeriod}
+                progressRate={project.progressRate}
+                achievedAmount={project.achievedAmount}
+                onClick={() => detailHandler(project)} // 클릭 시 해당 프로젝트 정보 넘기기
+              />
+            ))
+          ) : (
+            <p>프로젝트가 없습니다.</p> // 데이터가 없을 경우 표시
+          )}
         </div>
       </div>
     </div>

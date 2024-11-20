@@ -10,7 +10,7 @@ const ranks = [
   { id: 3, name: "test3", won: "500,000원" },
 ];
 
-const BoostRank = () => {
+const BoostRank = ({ projectDetails }) => {
   const navigate = useNavigate();
 
   return (
@@ -31,39 +31,68 @@ const BoostRank = () => {
       ))}
       <div className="pj-line"></div>
       <div className="pj-detail-boost-rank-Amount-won-box">
-        {/* 모인 금액, 남은 기간,퍼센트, 후원자 api 연동 필요 */}
         <div className="pj-detail-boost-rank-Amount-won-title"> 모인 금액</div>
         <div className="pj-detail-boost-rank-Amount-won-content">
           <div className="pj-detail-boost-rank-Amount-won-content-num">
-            <div className="pj-detail-boost-rank-Amount-won-content-num-won">
-              000000000{" "}
-              <div className="pj-detail-boost-rank-Amount-won-content-num-won-unit">
-                {" "}
-                원
-              </div>
-            </div>
+            {projectDetails ? (
+              <>
+                <div className="pj-detail-boost-rank-Amount-won-content-num-won">
+                  {projectDetails.achievementAmount}
+                  <div className="pj-detail-boost-rank-Amount-won-content-num-won-unit">
+                    {" "}
+                    원
+                  </div>
+                </div>
 
-            <div className="pj-detail-boost-rank-Amount-won-content-percent">
-              130%달성
-            </div>
+                <div className="pj-detail-boost-rank-Amount-won-content-percent">
+                  {projectDetails.achievementRate}%달성
+                </div>
+              </>
+            ) : (
+              <>
+                <div className="pj-detail-boost-rank-Amount-won-content-num-won">
+                  0
+                  <div className="pj-detail-boost-rank-Amount-won-content-num-won-unit">
+                    {" "}
+                    원
+                  </div>
+                </div>
+
+                <div className="pj-detail-boost-rank-Amount-won-content-percent">
+                  0%달성
+                </div>
+              </>
+            )}
           </div>
         </div>
       </div>
-      {/* 남은 기간 api 연동 필요 */}
+
       <div className="pj-detail-boost-rank-period-box">
         <div className="pj-detail-boost-rank-period-title">남은 기간</div>
-        <div className="pj-detail-boost-rank-period-content">
-          15
-          <div className="pj-detail-boost-rank-period-content-day"> 일</div>
-        </div>
+        {projectDetails ? (
+          <div className="pj-detail-boost-rank-period-content">
+            {projectDetails.leftDays}
+            <div className="pj-detail-boost-rank-period-content-day"> 일</div>
+          </div>
+        ) : (
+          <div className="pj-detail-boost-rank-period-content">
+            0<div className="pj-detail-boost-rank-period-content-day"> 일</div>
+          </div>
+        )}
       </div>
-      {/* 후원자 수 api 연동 필요 */}
+
       <div className="pj-detail-boost-rank-period-box">
         <div className="pj-detail-boost-rank-period-title">후원자</div>
-        <div className="pj-detail-boost-rank-period-content">
-          315
-          <div className="pj-detail-boost-rank-period-content-day"> 명</div>
-        </div>
+        {projectDetails ? (
+          <div className="pj-detail-boost-rank-period-content">
+            {projectDetails.boostedUserCount}
+            <div className="pj-detail-boost-rank-period-content-day"> 명</div>
+          </div>
+        ) : (
+          <div className="pj-detail-boost-rank-period-content">
+            0<div className="pj-detail-boost-rank-period-content-day"> 명</div>
+          </div>
+        )}
       </div>
       <div className="pj-detail-boost-rank-btn-container">
         <div className="pj-detail-boost-rank-like-btn">
