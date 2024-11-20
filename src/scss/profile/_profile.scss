@@ -1,0 +1,64 @@
+.profile-container {
+  display: flex;
+  column-gap: 2rem;
+  margin: 0 6.875rem;
+
+  .profile-image {
+    width: 267px;
+  }
+
+  .profile-name {
+    font-size: 1.875rem;
+    font-weight: 700;
+    margin-top: 1.375rem;
+  }
+
+  .profile-job {
+    color: #7F7F7F;
+    font-size: 1.375rem;
+    font-weight: 500;
+    margin-bottom: 1.375rem;
+  }
+
+  .profile-blog-link {
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    font-size: 1.5rem;
+    color: #00C78C;
+    column-gap: 0.75rem;
+    border: 0.5px solid #7F7F7F;
+    border-radius: 10px;
+    inline-size: fit-content;
+    padding: 0.5rem 1.875rem;
+  }
+
+  hr {
+    height: 80px;
+    background-color: #7F7F7F;
+    width: 1px;
+  }
+
+  .profile-introduce{
+    text-align: center;
+    border: 1px solid #D9D9D9;
+    border-radius: 15px;
+    padding: 2.5rem;
+  }
+
+  .profile-menu {
+    font-size: 1.3125rem;
+    font-weight: 600;
+    color: #D9D9D9;
+  }
+
+  .profile-menu.active {
+    border-bottom: 2px solid #00C78C;
+    font-size: 1.5rem;
+    color: #00C78C;
+  }
+
+  .font-Bruno{
+    font-family: "Bruno Ace", sans-serif;
+  }
+}
