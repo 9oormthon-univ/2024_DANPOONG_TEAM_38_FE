@@ -2,12 +2,13 @@ import React from "react";
 import Header from "./Header";
 import {Outlet, useLocation} from "react-router-dom";
 import Footer from "./Footer";
+import LoginFooter from "./LoginFooter";
 
 const Layout = () => {
     const location = useLocation();
     const path = location.pathname;
 
-    const hideFooterPaths = ["/login", "/login/user", "/login/company", "/signup"];
+    const hideFooterPaths = ["/login", "/login/user", "/login/company", "/signup","/signup/company"];
 
     const showFooter = !hideFooterPaths.includes(path);
 
@@ -18,6 +19,7 @@ const Layout = () => {
                 <Outlet/>
             </div>
             {showFooter && <Footer/>}
+            {!showFooter && <LoginFooter/>}
         </div>
     );
 };

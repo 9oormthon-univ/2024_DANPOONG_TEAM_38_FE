@@ -5,9 +5,12 @@ const Layout = lazy(() => import("../layout/Layout"));
 const Loading = lazy(() => import("../component/Loading"));
 
 const Login = lazy(() => import("../page/login/Login"));
+const KakaoLoading = lazy(() => import("../page/login/components/KakaoLoading"));
 const LoginType = lazy(() => import("../page/login/components/LoginType"));
 const Signup = lazy(() => import("../page/signup/Signup"));
-const Profile = lazy(() => import("../page/profile"));
+const SignupCompany = lazy(() => import("../page/signup/components/SignupCompany"));
+const MyPage = lazy(() => import("../page/myPage/MyPage"));
+const MyPageEdit = lazy(() => import("../page/myPage/MyPageEdit"));
 const Main = lazy(() => import("../page/main"));
 const Introduction = lazy(() => import("../page/introduction"));
 const Event = lazy(() => import("../page/showevent"));
@@ -29,6 +32,14 @@ const router = createBrowserRouter([
         ),
       },
       {
+        path: "login/callback",
+        element: (
+            <Suspense fallback={<Loading />}>
+              <KakaoLoading />
+            </Suspense>
+        ),
+      },
+      {
         path: "login/:type",
         element: (
           <Suspense fallback={<Loading />}>
@@ -45,6 +56,14 @@ const router = createBrowserRouter([
         ),
       },
       {
+        path: "signup/company",
+        element: (
+            <Suspense fallback={<Loading />}>
+              <SignupCompany />
+            </Suspense>
+        ),
+      },
+      {
         path: "",
         element: (
           <Suspense fallback={<Loading />}>
@@ -53,11 +72,19 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "profile",
+        path: "myPage",
         element: (
           <Suspense fallback={<Loading />}>
-            <Profile />
+            <MyPage />
           </Suspense>
+        ),
+      },
+      {
+        path: "myPage/edit",
+        element: (
+            <Suspense fallback={<Loading />}>
+              <MyPageEdit />
+            </Suspense>
         ),
       },
       {
