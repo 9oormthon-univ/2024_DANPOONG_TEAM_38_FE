@@ -1,6 +1,5 @@
 .pj-detail-container {
   width: 1440px;
-  height: 1000px;
   .pj-detail-main-container {
     margin-top: 30px;
     display: flex;
@@ -230,6 +229,86 @@
               }
             }
           }
+          .pj-detail-boost-rank-btn-container {
+            width: 474px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 21px;
+            margin: 0 auto;
+            .pj-detail-boost-rank-like-btn {
+              opacity: 1;
+              background: #ffffff;
+              box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
+              width: 83px;
+              height: 83px;
+              border-radius: 100px;
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              align-items: center;
+              .pj-detail-boost-rank-like-num {
+              }
+            }
+            .pj-detail-boost-rank-boost-btn {
+              border-radius: 10px;
+              opacity: 1;
+              background: #00c78c;
+              width: 359px;
+              height: 64px;
+              font-size: 24px;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              color: #ffffff;
+            }
+          }
+        }
+      }
+    }
+  }
+  .pj-detail-main-line {
+    opacity: 1;
+    background: #f5f5f7;
+    width: 1440px;
+    height: 14px;
+    margin-top: 51px;
+  }
+  .pj-detail-review-container {
+    display: flex;
+    width: 1440px;
+    height: 850px;
+    .pj-detail-review-container-box {
+      width: 1220px;
+      height: 740px;
+      margin: auto;
+      .pj-detail-review-container-box-header {
+        display: flex;
+        gap: 50px;
+        .menu-item {
+          font-size: 21px;
+          color: #d9d9d9;
+          cursor: pointer;
+        }
+
+        .menu-item.active {
+          color: #00c78c;
+          text-decoration: underline;
+          text-underline-offset: 7px;
+        }
+      }
+      .pj-detail-review-container-box-content {
+        .pj-plan-container {
+          width: 1220px;
+          height: 664px;
+          border-radius: 10px;
+          opacity: 1;
+          background: #ffffff;
+          box-sizing: border-box;
+          border: 1px solid #d9d9d9;
+          margin-top: 20px;
+          padding: 35px 52px;
+          font-size: 23px;
         }
       }
     }

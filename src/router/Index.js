@@ -14,6 +14,7 @@ const Event = lazy(() => import("../page/showevent"));
 const List = lazy(() => import("../page/project/list"));
 const Upload = lazy(() => import("../page/project/upload"));
 const Detail = lazy(() => import("../page/project/detail"));
+const Boost = lazy(() => import("../page/project/boost"));
 
 const router = createBrowserRouter([
   {
@@ -30,17 +31,17 @@ const router = createBrowserRouter([
       {
         path: "login/:type",
         element: (
-            <Suspense fallback={<Loading />}>
-              <LoginType />
-            </Suspense>
+          <Suspense fallback={<Loading />}>
+            <LoginType />
+          </Suspense>
         ),
       },
       {
         path: "signup",
         element: (
-            <Suspense fallback={<Loading />}>
-              <Signup />
-            </Suspense>
+          <Suspense fallback={<Loading />}>
+            <Signup />
+          </Suspense>
         ),
       },
       {
@@ -82,6 +83,16 @@ const router = createBrowserRouter([
             <Detail />
           </Suspense>
         ),
+        children: [
+          {
+            path: "boost",
+            element: (
+              <Suspense fallback={<Loading />}>
+                <Boost />
+              </Suspense>
+            ),
+          },
+        ],
       },
       {
         path: "upload",

@@ -1,6 +1,7 @@
 import React from "react";
 
-import { ReactComponent as Line } from "../../../assets/component/line.svg";
+import { ReactComponent as Like } from "../../../assets/component/project/like.svg";
+import { useNavigate } from "react-router-dom";
 
 // 후원 순위 api 대신
 const ranks = [
@@ -10,6 +11,8 @@ const ranks = [
 ];
 
 const BoostRank = () => {
+  const navigate = useNavigate();
+
   return (
     <div className="pj-detail-boost-ranking-container">
       {/* 후원 순위 api 연동 필요 */}
@@ -60,6 +63,20 @@ const BoostRank = () => {
         <div className="pj-detail-boost-rank-period-content">
           315
           <div className="pj-detail-boost-rank-period-content-day"> 명</div>
+        </div>
+      </div>
+      <div className="pj-detail-boost-rank-btn-container">
+        <div className="pj-detail-boost-rank-like-btn">
+          <Like />
+          {/* 프로젝트 좋아요 api 연동 필요 */}
+          <div className="pj-detail-boost-rank-like-num">111</div>
+        </div>
+        {/* 후원하기 api 연동 필요,후원하기 페이지 이동 연동 필요 */}
+        <div
+          className="pj-detail-boost-rank-boost-btn"
+          onClick={() => navigate("/detail/boost")}
+        >
+          이 프로젝트 후원하기
         </div>
       </div>
     </div>
