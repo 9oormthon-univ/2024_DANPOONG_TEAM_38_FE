@@ -1,8 +1,9 @@
 import React from "react";
 
-const Preview = ({ title }) => {
+const Preview = ({ title, name, place, onClick }) => {
   return (
-    <div className="preview-container">
+    // 프로젝트 preview api 연동후 수정 필요 list에서 넘어온 경우 달성 퍼센트랑 마감 날짜 필요
+    <div className="preview-container" onClick={onClick}>
       {/* 이미지 연동 필요 */}
       <div className="preview-img"></div>
       <div className="preview-content-container">

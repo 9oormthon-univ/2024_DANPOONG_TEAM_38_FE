@@ -4,7 +4,6 @@ import { ReactComponent as Right } from "../../../../assets/component/project/re
 import { ReactComponent as Left } from "../../../../assets/component/project/reviewleft.svg";
 import { ReactComponent as AtRight } from "../../../../assets/component/project/Atreviewright.svg";
 import { ReactComponent as AtLeft } from "../../../../assets/component/project/Atreviewleft.svg";
-
 // 후원 댓글 api 연동 전 임시 데이터
 const data = {
   comments: [
@@ -65,7 +64,6 @@ const data = {
   ],
   totalPages: 2,
 };
-
 const Comment = () => {
   const [comments, setComments] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
