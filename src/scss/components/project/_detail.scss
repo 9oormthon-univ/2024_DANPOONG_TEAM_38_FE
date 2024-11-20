@@ -277,10 +277,11 @@
   .pj-detail-review-container {
     display: flex;
     width: 1440px;
-    height: 850px;
+    margin-top: 20px;
+
     .pj-detail-review-container-box {
       width: 1220px;
-      height: 740px;
+
       margin: auto;
       .pj-detail-review-container-box-header {
         display: flex;
@@ -307,6 +308,7 @@
           box-sizing: border-box;
           border: 1px solid #d9d9d9;
           margin-top: 20px;
+          margin-bottom: 58px;
           padding: 35px 52px;
           font-size: 23px;
         }
@@ -378,6 +380,81 @@
               color: #000000;
             }
           }
+        }
+      }
+
+      .pj-boost-review-comments-container {
+        margin-top: 42px;
+        margin-bottom: 80px;
+        .pj-boost-review-comments-select-rank-btn {
+          display: flex;
+          justify-content: flex-end;
+          font-size: 22px;
+
+          color: #424242;
+        }
+        .pj-boost-review-show-comments-container {
+          width: 1220px;
+          height: 1110px;
+          border-radius: 10px;
+          opacity: 1;
+          background: #ffffff;
+          border: 1px solid #d9d9d9;
+          margin-top: 14px;
+          display: flex;
+          flex-direction: column;
+          padding-left: 37px;
+          padding-top: 20px;
+          padding-bottom: 20px;
+          .pj-boost-comments-box {
+            display: flex;
+            width: 960px;
+            height: 130px;
+            align-items: center;
+            + .pj-boost-comments-box {
+              opacity: 1;
+              width: 1120px;
+              border-top: 0.5px solid #d9d9d9; /* Gray 02 */
+              margin-top: 15px; /* Optional spacing adjustment */
+              padding-top: 15px; /* Optional spacing adjustment */
+            }
+            .pj-boost-reviews-show-comments-user-name {
+              display: flex;
+              flex-direction: column;
+              font-size: 25px;
+              color: #000000;
+              font-weight: 700;
+              .pj-boost-reviews-show-comments-user-day {
+                font-size: 16px;
+                color: #7f7f7f;
+              }
+            }
+            .pj-boost-reviews-show-comments-content {
+              margin-left: 40px;
+              .pj-boost-reviews-show-comments-content-user {
+                font-size: 18px;
+
+                display: flex;
+                align-items: center;
+
+                color: #7f7f7f;
+              }
+              .pj-boost-reviews-show-comments-content-user-write {
+                width: 900px;
+                font-size: 20px;
+                display: flex;
+                align-items: center;
+                color: #000000;
+              }
+            }
+          }
+        }
+        .pj-comments-btn {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          gap: 25px;
+          margin-top: 40px;
         }
       }
     }

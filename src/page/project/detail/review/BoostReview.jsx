@@ -2,6 +2,7 @@ import React from "react";
 
 import { ReactComponent as Write } from "../../../../assets/component/project/write.svg";
 import { useNavigate } from "react-router-dom";
+import Comment from "./Comment";
 
 const BoostReview = () => {
   const navigate = useNavigate();
@@ -37,6 +38,7 @@ const BoostReview = () => {
             </div>
           </div>
         </div>
+        <Comment />
       </div>
     </div>
   );
