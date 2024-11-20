@@ -29,15 +29,15 @@ const MyPage = () => {
                             <div className='myPage-level'>직업 or 레벨 (ex.새싹투자자)</div>
                         </div>
                         <a href="" className='myPage-blog-link'><BlogLinkIcon/><span>naver.com</span></a>
-                        <div className='flex gap-x-4 items-center'>
+                        <div className='flex gap-x-8 items-center'>
                             <div className='text-center'>
                                 <div className='text-2xl mb-3'>팔로잉</div>
-                                <div className='text-4xl font-bold'>185</div>
+                                <div className='text-4xl font-bold font-Bruno'>185</div>
                             </div>
                             <hr/>
                             <div className='text-center'>
                                 <div className='text-2xl mb-3'>팔로워</div>
-                                <div className='text-4xl font-bold'>69</div>
+                                <div className='text-4xl font-bold font-Bruno'>69</div>
                             </div>
                         </div>
                     </div>

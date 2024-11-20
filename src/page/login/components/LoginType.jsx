@@ -4,18 +4,47 @@ import LoginLogo from '../../../assets/login/LoginLogo.png';
 import KakaoLogo from '../../../assets/login/KakaoLogo.png';
 import {ReactComponent as FindUserIcon} from "../../../assets/login/FindUserIcon.svg";
 import {ReactComponent as SignUpIcon} from "../../../assets/login/SignUpIcon.svg";
-import KakaoLoading from "./KakaoLoading";
+import PostCompanyLogin from "../../../apis/login/company/PostCompanyLogin";
 
 const LoginType = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const category = location.state;
-
-    const KAKAO_LOGIN_URL = `https://kauth.kakao.com/oauth/authorize?client_id=${process.env.REACT_APP_KAKAO_REST_API_KEY}&redirect_uri=http://localhost:3000/login/callback&response_type=code`;
+    const KAKAO_LOGIN_URL = `https://kauth.kakao.com/oauth/authorize?client_id=${process.env.REACT_APP_KAKAO_REST_API_KEY}&redirect_uri=http://localhost:3000/api/auth/kakao/login&response_type=code`;
 
     const clickKakaoLogin = () => {
         window.location.href = KAKAO_LOGIN_URL;
     }
+
+    const [formData, setFormData] = useState({
+        email: '',
+        password: '',
+    });
+
+    const InputChange = (e) => {
+        const {id, value} = e.target;
+        setFormData({
+            ...formData,
+            [id]: value
+        });
+    };
+
+    const ClickSubmit = async () => {
+        const {email, password} = formData;
+
+        if (!email || !password) {
+            alert('모든 필드를 작성해주세요!');
+            return;
+        }
+
+        const result = await PostCompanyLogin(formData);
+        if (result?.accessToken) {
+            alert('로그인에 되었습니다.');
+            navigate('/');
+        } else {
+            alert('로그인에 실패했습니다. 다시 시도해주세요.');
+        }
+    };
 
     return (
         <div className='loginType-container'>
@@ -40,9 +69,11 @@ const LoginType = () => {
                         </>
                         :
                         <>
-                            <input type="text" placeholder='이메일' className='login-company-input-text'/>
-                            <input type="text" placeholder='비밀번호' className='login-company-input-text'/>
-                            <button className='loginType-company-button'>
+                            <input type="email" id="email" name="email" value={formData.email}
+                                   onChange={InputChange} placeholder='이메일' className='login-company-input-text'/>
+                            <input type="password" id="password" name="password" value={formData.password}
+                                   onChange={InputChange} placeholder='비밀번호' className='login-company-input-text'/>
+                            <button className='loginType-company-button' onClick={ClickSubmit}>
                                 로그인
                             </button>
                             <div className='flex ml-auto gap-x-7'>

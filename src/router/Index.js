@@ -11,6 +11,7 @@ const Signup = lazy(() => import("../page/signup/Signup"));
 const SignupCompany = lazy(() => import("../page/signup/components/SignupCompany"));
 const MyPage = lazy(() => import("../page/myPage/MyPage"));
 const MyPageEdit = lazy(() => import("../page/myPage/MyPageEdit"));
+const Profile = lazy(() => import("../page/profile/Profile"));
 const Main = lazy(() => import("../page/main"));
 const Introduction = lazy(() => import("../page/introduction"));
 const Event = lazy(() => import("../page/showevent"));
@@ -32,7 +33,7 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "login/callback",
+        path: "api/auth/kakao/login",
         element: (
             <Suspense fallback={<Loading />}>
               <KakaoLoading />
@@ -84,6 +85,14 @@ const router = createBrowserRouter([
         element: (
             <Suspense fallback={<Loading />}>
               <MyPageEdit />
+            </Suspense>
+        ),
+      },
+      {
+        path: "profile/:id",
+        element: (
+            <Suspense fallback={<Loading />}>
+              <Profile />
             </Suspense>
         ),
       },
