@@ -1,10 +1,13 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import MyProjectDummy from '../../../assets/myPage/myProject/MyProjectDummy.jpg';
 import CategoryDummy from '../../../assets/myPage/myProject/CategoryDummy.svg';
 import {ReactComponent as Step0} from "../../../assets/myPage/myProject/Step0.svg";
 import {ReactComponent as Step1} from "../../../assets/myPage/myProject/Step1.svg";
 import {ReactComponent as Step2} from "../../../assets/myPage/myProject/Step2.svg";
 import {ReactComponent as Step3} from "../../../assets/myPage/myProject/Step3.svg";
+import GetMyProject from "../../../apis/myPage/GetMyProject";
+import Icons from '../../../assets/myPage/Icons/Icons';
+import DeleteProject from "../../../apis/myPage/DeleteProject";
 
 const StepMap = [
     {step: 0, title: '작성', img: <Step0/>},
@@ -13,46 +16,86 @@ const StepMap = [
     {step: 3, title: '완료', img: <Step3/>}
 ];
 
+const IconMap = {
+    "미술": Icons.ArtIcon,
+    "뷰티": Icons.BeautyIcon,
+    "소품": Icons.BoxIcon,
+    "기업": Icons.BusinessIcon,
+    "게임": Icons.GameIcon,
+    "음악": Icons.MusicIcon,
+    "인기": Icons.PopularityIcon,
+    "지역": Icons.RegionIcon,
+    "웹/앱": Icons.WebIcon
+};
+
 const MyProject = () => {
+    const [projects, setProjects] = useState([]);
     const [step, setStep] = useState(3);
+
+    //내 프로젝트들 조회, progressRate 물어보기
+    useEffect(() => {
+        const GetMyProjects = async () => {
+            try {
+                const result = await GetMyProject();
+                if (result?.data?.isSuccess) {
+                    setProjects(result.data.result);
+                }
+                console.log(result);
+            } catch (error) {
+                console.log(error);
+            }
+        }
+        GetMyProjects();
+    }, []);
+
+    const deleteProject = async (projectId) => {
+        const result = await DeleteProject(projectId);
+        console.log(result);
+    }
 
     return (
         <div className='myProject-container'>
-            <div className='myProject-box'>
-                <div><img className='myProject-image' src={MyProjectDummy} alt="dummy"/></div>
-                <div className='myProject-content'>
-                    <div>
-                        <span className='myProject-date'>2024.11.08-2024.12.12</span>
-                        <div className='flex justify-between'>
-                            <p className='myProject-title'>다양한 예술 작품을 감상하고 아트 전시회에 전시까지 가능한 프로젝트</p>
-                            <div>
-                                <img src={CategoryDummy} alt="dummy"/>
-                                <span>미술</span>
+            {projects.map((project) => (
+                <div key={project.id} className='myProject-box'>
+                    <div><img className='myProject-image' src={project.image} alt="project-img"/></div>
+                    <div className='myProject-content'>
+                        <div>
+                            <span className='myProject-date'>{project.progressPeriod}</span>
+                            <div className='flex justify-between'>
+                                <p className='myProject-title'>{project.mainTitle}</p>
+                                <div>
+                                    <img className='myProject-icon' src={IconMap[project.category]} alt="dummy"/>
+                                    <span>{project.category}</span>
+                                </div>
                             </div>
-                        </div>
-                        <div className='myProject-progress'>
-                            <div className='progress-steps'>
-                                {StepMap.map((index) => (
-                                    <div>
-                                        <div
-                                            key={index.step}
-                                            className={`step ${index.step <= step ? 'active' : ''}`}
-                                        >
-                                            {index.img}
+                            <div className='myProject-progress'>
+                                <div className='progress-steps'>
+                                    {StepMap.map((index) => (
+                                        <div>
+                                            <div
+                                                key={index.step}
+                                                className={`step ${index.step <= step ? 'active' : ''}`}
+                                            >
+                                                {index.img}
+                                            </div>
+                                            <span
+                                                style={{color: `${index.step <= step ? '#00C78C' : '#C5EBE0'}`}}>{index.title}</span>
                                         </div>
-                                        <span style={{color: `${index.step <= step ? '#00C78C' : '#C5EBE0'}`}}>{index.title}</span>
-                                    </div>
-                                ))}
+                                    ))}
+                                </div>
+                                <div className='myProject-progress-gauge' style={{width: `${(step / 3) * 100}%`}}></div>
                             </div>
-                            <div className='myProject-progress-gauge' style={{width: `${(step / 3) * 100}%`}}></div>
                         </div>
-                    </div>
-                    <div className='flex gap-x-3 justify-end'>
-                        <button className='myProject-button'>관리하기</button>
-                        <button className='myProject-button'>삭제하기</button>
+                        <div className='flex gap-x-3 justify-end'>
+                            <button className='myProject-button'>관리하기</button>
+                            <button className='myProject-button' onClick={() => {
+                                deleteProject(project.id)
+                            }}>삭제하기
+                            </button>
+                        </div>
                     </div>
                 </div>
-            </div>
+            ))}
         </div>
     );
 };

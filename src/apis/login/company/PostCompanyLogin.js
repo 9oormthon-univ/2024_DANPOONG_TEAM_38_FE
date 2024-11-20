@@ -11,6 +11,9 @@ const PostCompanyLogin = async (formData) => {
 
         const {accessToken, refreshToken} = response.data;
 
+        sessionStorage.setItem('accessToken', accessToken);
+        sessionStorage.setItem('refreshToken', refreshToken);
+
         return {accessToken, refreshToken};
     } catch (error) {
         console.error(error);
