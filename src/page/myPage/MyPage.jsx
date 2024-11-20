@@ -1,9 +1,11 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import MyPageUserImage from '../../assets/myPage/MyPageUserImage.jpg';
 import {ReactComponent as EditIcon} from "../../assets/myPage/EditIcon.svg";
 import {ReactComponent as BlogLinkIcon} from "../../assets/myPage/BlogLinkIcon.svg";
 import MyProject from "./components/MyProject";
 import Proposal from "./components/Proposal";
+import GetUserMyPage from "../../apis/myPage/GetUserMyPage";
+import PostCompanyLogout from "../../apis/login/company/PostCompanyLogout";
 
 const menuItems = [
     {key: 'myProject', label: '나의 프로젝트'},
@@ -16,9 +18,27 @@ const menuItems = [
 const MyPage = () => {
     const [menu, setMenu] = useState('myProject');
 
+    // useEffect(() => {
+    //     const GetUserInfo = async () => {
+    //         try {
+    //             const result = await GetUserMyPage();
+    //             console.log(result);
+    //         } catch (error) {
+    //             console.log(error);
+    //         }
+    //     }
+    //     GetUserInfo();
+    // }, []);
+    
+    const clickLogout = async () => {
+        const result = await PostCompanyLogout();
+        console.log(result);
+    }
+
     return (
         <div className='myPage-container'>
             <section className='flex gap-x-9'>
+                <button onClick={clickLogout}>로그아웃</button>
                 <div>
                     <img src={MyPageUserImage} alt="dummy"/>
                 </div>

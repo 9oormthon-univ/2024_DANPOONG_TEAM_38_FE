@@ -11,6 +11,7 @@
       min-width: 445px;
       max-width: 445px;
       max-height: 373px;
+      min-height: 373px;
     }
 
     .myProject-content {
@@ -18,6 +19,7 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      flex: 1;
 
       .myProject-date {
         font-weight: 400;
@@ -33,6 +35,12 @@
         -webkit-box-orient: vertical;
         overflow: hidden;
         text-overflow: ellipsis;
+      }
+
+      .myProject-icon {
+        width: 27px;
+        height: 27px;
+        margin: 0 auto;
       }
 
       .myProject-progress {
