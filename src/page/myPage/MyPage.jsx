@@ -32,12 +32,12 @@ const MyPage = () => {
                         <div className='flex gap-x-4 items-center'>
                             <div className='text-center'>
                                 <div className='text-2xl mb-3'>팔로잉</div>
-                                <div className='text-4xl font-bold'>185</div>
+                                <div className='text-4xl font-bold font-Bruno'>185</div>
                             </div>
                             <hr/>
                             <div className='text-center'>
                                 <div className='text-2xl mb-3'>팔로워</div>
-                                <div className='text-4xl font-bold'>69</div>
+                                <div className='text-4xl font-bold font-Bruno'>69</div>
                             </div>
                         </div>
                     </div>

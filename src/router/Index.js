@@ -32,7 +32,7 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "login/callback",
+        path: "api/auth/kakao/login",
         element: (
             <Suspense fallback={<Loading />}>
               <KakaoLoading />
