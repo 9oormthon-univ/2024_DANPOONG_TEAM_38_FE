@@ -8,8 +8,11 @@ const KakaoLoading = () => {
     const GetToken = async (code) => {
         try {
             const result = await GetCode(code);
-            console.log(result);
-            // navigate('/');
+            const {accessToken, refreshToken} = result.data.result;
+
+            sessionStorage.setItem('accessToken', accessToken);
+            sessionStorage.setItem('refreshToken', refreshToken);
+            navigate('/');
         } catch (error) {
             console.log(error);
         }
