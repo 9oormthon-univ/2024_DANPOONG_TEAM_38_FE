@@ -27,8 +27,12 @@ const Planning = ({ project }) => {
 
     fetchProjectDetails();
   }, [project.id]);
+
+  if (!projectDetails) {
+    return <div>프로젝트 정보를 불러오는 중...</div>; // 프로젝트 정보가 로드될 때까지 로딩 메시지 표시
+  }
+
   return (
-    // 기업 설명 api 연동 필요
     <div className="pj-plan-container">
       {/*  */}
       <br />
