@@ -7,10 +7,10 @@
   height: 64px;
   justify-content: center;
   margin-top: 42px;
-
+  z-index: 1000px;
   .header-title-container {
     display: flex;
-    z-index: 10px;
+
     padding-left: 110px;
     align-items: center;
     width: 1440px;

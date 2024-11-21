@@ -27,7 +27,7 @@ const Preview = ({
           <div className="preview-content-icon">{category}</div>
         </div>
         {/* 진행상황 연동 필요 */}
-        <div className="preivew-graph"> 그래프 연동 필요</div>
+        <div>그래프 연동</div>
         <div className="preview-content-load">
           <div className="preview-progressRate">{progressRate}</div>
           <div className="preview-achievedAmount">{achievedAmount}원 달성</div>

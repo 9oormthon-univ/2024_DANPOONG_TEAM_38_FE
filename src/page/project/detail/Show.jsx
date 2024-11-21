@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { ReactComponent as Left } from "../../../assets/component/project/left.svg";
 import { ReactComponent as Right } from "../../../assets/component/project/right.svg";
-import GetAllProject from "../../../apis/project/GetAllProject";
+import GetProject from "../../../apis/project/GetProject";
 
 const Show = ({ project }) => {
   const [currentIndex, setCurrentIndex] = useState(0); // 현재 슬라이드 인덱스
@@ -20,9 +20,9 @@ const Show = ({ project }) => {
           return;
         }
 
-        // GetAllProject API 호출, project.id를 전달
-        const response = await GetAllProject(project.id);
-        const currentProject = response.result; // GetAllProject가 반환하는 데이터 처리
+        // GetProject API 호출, project.id를 전달
+        const response = await GetProject(project.id);
+        const currentProject = response.result; // GetProject가 반환하는 데이터 처리
         console.log(project.id, currentProject);
         if (currentProject) {
           setProjectDetails(currentProject);

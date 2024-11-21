@@ -20,6 +20,25 @@
           padding-top: 5px;
           font-size: 18px;
           color: #7f7f7f;
+          &.active {
+            color: #00c78c; /* active 상태일 때 색상 변경 */
+          }
+
+          &.weekly {
+            color: #7f7f7f; /* 주간 메뉴일 때 기본 색상 */
+          }
+
+          &.monthly {
+            color: #7f7f7f; /* 월간 메뉴일 때 기본 색상 */
+          }
+
+          &.allTime {
+            color: #7f7f7f; /* 전체 메뉴일 때 기본 색상 */
+          }
+
+          &.projects {
+            color: #7f7f7f; /* 프로젝트 수 메뉴일 때 기본 색상 */
+          }
         }
       }
       .rank-compant-img {
@@ -31,6 +50,50 @@
           height: 290px;
           background: #7f7f7f;
           border-radius: 200px;
+          .rank-preview-info {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            margin-top: 216px;
+
+            .rank-preview-img-name {
+              position: absolute;
+              color: #ffffff;
+              font-size: 22px;
+            }
+          }
+          .rank-preview-info-click {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 290px;
+            height: 290px;
+            border-radius: 200px;
+            background: rgba(0, 0, 0, 0.8);
+            .rank-preview-info-rank {
+              color: #53ffcc;
+              font-size: 25px;
+              opacity: 1;
+            }
+            .rank-preview-info-category {
+              color: #ff9b80;
+              text-decoration: underline;
+              text-underline-offset: 7px;
+            }
+            .rank-preview-info-name {
+              color: #ffffff;
+              font-size: 26px;
+            }
+            .rank-preview-info-amount {
+              color: #ffffff;
+              font-size: 26px;
+            }
+            .rank-preview-info-count {
+            }
+          }
         }
       }
       .rank-preview-next-btn {
