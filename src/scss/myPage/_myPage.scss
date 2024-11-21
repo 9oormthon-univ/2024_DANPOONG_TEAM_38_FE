@@ -3,6 +3,12 @@
   flex-direction: column;
   margin: 0 6.875rem;
 
+  .myPage-userImage {
+    width: 290px;
+    height: 290px;
+    object-fit: cover;
+  }
+
   .myPage-nickname {
     font-weight: 700;
     font-size: 1.625rem;
@@ -31,7 +37,7 @@
     font-size: 1.125rem;
   }
 
-  hr {
+  .myPage-hr {
     height: 80px;
     background-color: #7F7F7F;
     width: 1px;
@@ -50,7 +56,7 @@
     color: #00C78C;
   }
 
-  .font-Bruno{
+  .font-Bruno {
     font-family: "Bruno Ace", sans-serif;
   }
 

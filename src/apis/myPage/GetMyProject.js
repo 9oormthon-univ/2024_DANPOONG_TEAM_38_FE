@@ -1,5 +1,5 @@
 import axios from 'axios';
-
+// 로그인한 유저에 프로젝트들 조회
 const GetMyProject = async () => {
     const accessToken = sessionStorage.getItem('accessToken');
 
@@ -9,6 +9,7 @@ const GetMyProject = async () => {
                 Authorization: `Bearer ${accessToken}`,
             },
         });
+
         return response;
     } catch (error) {
         if (error.response.status === 401) {

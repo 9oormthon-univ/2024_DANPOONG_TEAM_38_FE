@@ -1,12 +1,7 @@
 import axios from 'axios';
-
+// 유저에 대한 마이페이지 정보 조회
 const GetUserMyPage = async () => {
     const accessToken = sessionStorage.getItem('accessToken');
-
-    if (!accessToken) {
-        console.error('Access Token이 존재하지 않습니다.');
-        return;
-    }
 
     try {
         const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/mypage`, {
@@ -14,7 +9,7 @@ const GetUserMyPage = async () => {
                 Authorization: `Bearer ${accessToken}`,
             },
         });
-        return response;
+        return response.data;
     } catch (error) {
         if (error.response.status === 401) {
             console.error('Access Token이 만료되었습니다. 갱신이 필요합니다.');
