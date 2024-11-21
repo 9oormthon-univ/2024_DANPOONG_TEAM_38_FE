@@ -8,6 +8,7 @@ import PjPreparation from "./PjPreparation";
 
 const Upload = () => {
   return (
+    // ui아직 미완성
     // 프로젝트 만드는 api 연동 필요
     <div className="upload-container">
       <Search />
@@ -20,7 +21,7 @@ const Upload = () => {
           <PjCategory />
           <PjIntroduce />
           {/* 프로젝트 작성1에서 다음 버튼 만들어지면 그후 넘어가게 연동 필요 */}
-          <PjPreparation />
+          {/* <PjPreparation /> */}
         </div>
       </div>
     </div>
