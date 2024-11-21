@@ -44,6 +44,10 @@ const ProjectList = () => {
     setCurrentPage(page);
   };
 
+  const detailHandler = (project) => {
+    // 프로젝트 상세페이지로 이동하며, 해당 프로젝트 정보 전달
+    navigate("/detail", { state: { project } });
+  };
   return (
     <div className="pj-list-container">
       <Search />
@@ -62,7 +66,7 @@ const ProjectList = () => {
                 progressPeriod={project.progressPeriod}
                 progressRate={project.progressRate}
                 achievedAmount={project.achievedAmount}
-                onClick={() => navigate(`/detail`)}
+                onClick={() => detailHandler(project)}
               />
             ))
           ) : (

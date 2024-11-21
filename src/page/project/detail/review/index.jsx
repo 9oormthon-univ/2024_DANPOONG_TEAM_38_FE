@@ -4,9 +4,9 @@ import ComReview from "./ComReview";
 import Planning from "./Planning";
 import Deadline from "./Deadline";
 
-const Review = () => {
+const Review = ({ project }) => {
   const menu = [
-    { title: "기획", component: <Planning /> },
+    { title: "기획", component: <Planning project={project} /> },
     { title: "기업 후기", component: <ComReview /> },
     { title: "후원자 후기", component: <BoostReview /> },
     { title: "마감 후기", component: <Deadline /> },
