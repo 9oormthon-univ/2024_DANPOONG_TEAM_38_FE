@@ -10,8 +10,10 @@ const KakaoLoading = () => {
             const result = await GetCode(code);
             const {accessToken, refreshToken} = result.data.result;
 
+            sessionStorage.setItem('type', 'USER');
             sessionStorage.setItem('accessToken', accessToken);
             sessionStorage.setItem('refreshToken', refreshToken);
+            alert('로그인 되었습니다.');
             navigate('/');
         } catch (error) {
             console.log(error);

@@ -1,11 +1,9 @@
 import React, {useEffect, useState} from "react";
-import MyPageUserImage from '../../assets/myPage/MyPageUserImage.jpg';
 import {ReactComponent as EditIcon} from "../../assets/myPage/EditIcon.svg";
 import {ReactComponent as BlogLinkIcon} from "../../assets/myPage/BlogLinkIcon.svg";
 import MyProject from "./components/MyProject";
 import Proposal from "./components/Proposal";
 import GetUserMyPage from "../../apis/myPage/GetUserMyPage";
-import PostCompanyLogout from "../../apis/login/company/PostCompanyLogout";
 
 const menuItems = [
     {key: 'myProject', label: '나의 프로젝트'},
@@ -17,47 +15,48 @@ const menuItems = [
 
 const MyPage = () => {
     const [menu, setMenu] = useState('myProject');
+    const [userInfo,setUserInfo] = useState(null);
+    const type = sessionStorage.getItem("type");
 
-    // useEffect(() => {
-    //     const GetUserInfo = async () => {
-    //         try {
-    //             const result = await GetUserMyPage();
-    //             console.log(result);
-    //         } catch (error) {
-    //             console.log(error);
-    //         }
-    //     }
-    //     GetUserInfo();
-    // }, []);
-    
-    const clickLogout = async () => {
-        const result = await PostCompanyLogout();
-        console.log(result);
-    }
+    const filteredMenuItems = type === 'USER'
+        ? menuItems.filter(item => item.key !== 'proposal')
+        : menuItems;
+
+    useEffect(() => {
+        const GetUserInfo = async () => {
+            try {
+                const result = await GetUserMyPage();
+                setUserInfo(result.result)
+                console.log(result);
+            } catch (error) {
+                console.log(error);
+            }
+        }
+        GetUserInfo();
+    }, []);
 
     return (
         <div className='myPage-container'>
             <section className='flex gap-x-9'>
-                <button onClick={clickLogout}>로그아웃</button>
                 <div>
-                    <img src={MyPageUserImage} alt="dummy"/>
+                    <img className='myPage-userImage' src={userInfo?.image} alt="userImage"/>
                 </div>
                 <div className='flex justify-between flex-1'>
                     <div className='flex flex-col justify-around'>
                         <div>
-                            <div className='myPage-nickname'>닉네임</div>
-                            <div className='myPage-level'>직업 or 레벨 (ex.새싹투자자)</div>
+                            <div className='myPage-nickname'>{userInfo?.name}</div>
+                            <div className='myPage-level'>{userInfo?.tag}</div>
                         </div>
-                        <a href="" className='myPage-blog-link'><BlogLinkIcon/><span>naver.com</span></a>
+                        <a href="" className='myPage-blog-link'><BlogLinkIcon/><span>{userInfo?.link}</span></a>
                         <div className='flex gap-x-8 items-center'>
                             <div className='text-center'>
                                 <div className='text-2xl mb-3'>팔로잉</div>
-                                <div className='text-4xl font-bold font-Bruno'>185</div>
+                                <div className='text-4xl font-bold font-Bruno'>{userInfo?.followingCount}</div>
                             </div>
-                            <hr/>
+                            <hr className='myPage-hr'/>
                             <div className='text-center'>
                                 <div className='text-2xl mb-3'>팔로워</div>
-                                <div className='text-4xl font-bold font-Bruno'>69</div>
+                                <div className='text-4xl font-bold font-Bruno'>{userInfo?.followerCount}</div>
                             </div>
                         </div>
                     </div>
@@ -70,7 +69,7 @@ const MyPage = () => {
                 </div>
             </section>
             <section className='mt-28 mb-16 flex gap-x-12'>
-                {menuItems.map((item) => (
+                {filteredMenuItems.map((item) => (
                     <button
                         key={item.key}
                         className={`myPage-menu ${menu === item.key ? 'active' : ''}`}

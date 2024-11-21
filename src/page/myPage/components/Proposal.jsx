@@ -1,32 +1,97 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {ReactComponent as BackArrowIcon} from '../../../assets/myPage/BackArrowIcon.svg';
 import DummyImg2 from '../../../assets/myPage/DummyImg2.png';
+import GetProposal from "../../../apis/myPage/GetProposal";
+import ProposalDetail from "./ProposalDetail";
 
 const Proposal = () => {
+    const [proposals, setProposals] = useState([]); // 받아온 데이터 상태
+    const [currentPage, setCurrentPage] = useState(0); // 현재 페이지 상태
+    const [totalPages, setTotalPages] = useState(1); // 전체 페이지 수 상태
+    const [detailProposal, setDetailProposal] = useState(null);
+
+    const GetProposals = async (page) => {
+        try {
+            const response = await GetProposal(page);
+            if (response?.data?.isSuccess) {
+                const result = response.data.result;
+                setProposals(result.content);
+                setTotalPages(result.totalPages);
+                console.log(result);
+            }
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    };
+
+    useEffect(() => {
+        GetProposals(currentPage);
+    }, [currentPage]);
+
+    const handlePageChange = (newPage) => {
+        if (newPage >= 0 && newPage < totalPages) {
+            setCurrentPage(newPage);
+        }
+    };
+
+    if (detailProposal !== null) {
+        return (
+            <ProposalDetail
+                detailProposal={detailProposal}
+                onBack={() => setDetailProposal(null)}
+            />
+        );
+    }
+
     return (
         <div className='proposal-container'>
-            <div className='proposal-box'>
-                <div className='flex gap-x-7 justify-between'>
-                    <div className='flex gap-x-7'>
-                        <div className='text-center'>
-                            <div className='overflow-hidden'><img className='proposal-profile-image' src={DummyImg2} alt=""/></div>
-                            <span className='proposal-user-name'>김동준</span>
+            {proposals.map((proposal, index) => (
+                <div key={index} className='proposal-box'>
+                    <div className='flex gap-x-7 justify-between'>
+                        <div className='flex gap-x-7 flex-1'>
+                            <div className='text-center'>
+                                <div className='overflow-hidden'>
+                                    <img
+                                        className='proposal-profile-image'
+                                        src={proposal.image || DummyImg2}
+                                        alt="프로필"
+                                    />
+                                </div>
+                                <span className='proposal-user-name'>{proposal.userName}</span>
+                            </div>
+                            <div className='proposal-content'>
+                                <span className='proposal-date'>{proposal.createdAt}</span>
+                                <p className='proposal-title'>{proposal.title}</p>
+                                <p className='proposal-detail'>{proposal.content}</p>
+                            </div>
                         </div>
-                        <div className='proposal-content'>
-                            <span className='proposal-date'>2024.11.17 15:30</span>
-                            <p className='proposal-title'>안녕하세요 000님, 저는 청년 사업가 김동준입니다.</p>
-                            <p className='proposal-detail'>안녕하세요. 저는 지금 청년 지역 프로제트를 진행중인 차에 000님의 후원 프로젝트를 보고 관심을 갖게되어
-                                연락 드렸습니다. 다름이 아니라 저희가 현재 2개월 간 진행하</p>
+                        <div className='scale-x-[-1] my-auto cursor-pointer'>
+                            <BackArrowIcon onClick={() => setDetailProposal(proposal.id)}/>
                         </div>
                     </div>
-                    <div className='scale-x-[-1] m-auto'>
-                        <BackArrowIcon/>
+                    <div className='flex gap-x-3 justify-end mt-3'>
+                        <button className='proposal-button'>수락하기</button>
+                        <button className='proposal-button'>거절하기</button>
                     </div>
                 </div>
-                <div className='flex gap-x-3 justify-end mt-3'>
-                    <button className='proposal-button'>수락하기</button>
-                    <button className='proposal-button'>거절하기</button>
-                </div>
+            ))}
+
+            <div className='pagination-buttons flex justify-center my-5'>
+                <button
+                    className='pagination-button'
+                    onClick={() => handlePageChange(currentPage - 1)}
+                    disabled={currentPage === 0}
+                >
+                    이전
+                </button>
+                <span className='current-page'>{currentPage + 1} / {totalPages}</span>
+                <button
+                    className='pagination-button'
+                    onClick={() => handlePageChange(currentPage + 1)}
+                    disabled={currentPage === totalPages - 1}
+                >
+                    다음
+                </button>
             </div>
         </div>
     );

@@ -39,6 +39,7 @@ const LoginType = () => {
 
         const result = await PostCompanyLogin(formData);
         if (result?.accessToken) {
+            sessionStorage.setItem('email', email);
             alert('로그인에 되었습니다.');
             navigate('/');
         } else {

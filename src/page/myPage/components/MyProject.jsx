@@ -1,6 +1,4 @@
 import React, {useEffect, useState} from 'react';
-import MyProjectDummy from '../../../assets/myPage/myProject/MyProjectDummy.jpg';
-import CategoryDummy from '../../../assets/myPage/myProject/CategoryDummy.svg';
 import {ReactComponent as Step0} from "../../../assets/myPage/myProject/Step0.svg";
 import {ReactComponent as Step1} from "../../../assets/myPage/myProject/Step1.svg";
 import {ReactComponent as Step2} from "../../../assets/myPage/myProject/Step2.svg";
@@ -30,7 +28,6 @@ const IconMap = {
 
 const MyProject = () => {
     const [projects, setProjects] = useState([]);
-    const [step, setStep] = useState(3);
 
     //내 프로젝트들 조회, progressRate 물어보기
     useEffect(() => {
@@ -40,7 +37,7 @@ const MyProject = () => {
                 if (result?.data?.isSuccess) {
                     setProjects(result.data.result);
                 }
-                console.log(result);
+                console.log('프로젝트: ',result);
             } catch (error) {
                 console.log(error);
             }
@@ -53,49 +50,62 @@ const MyProject = () => {
         console.log(result);
     }
 
+    const calculateStep = (progressRate) => {
+        if (progressRate <= 25) return 0;
+        if (progressRate <= 50) return 1;
+        if (progressRate <= 75) return 2;
+        return 3; // 76~100은 3
+    };
+
     return (
         <div className='myProject-container'>
-            {projects.map((project) => (
-                <div key={project.id} className='myProject-box'>
-                    <div><img className='myProject-image' src={project.image} alt="project-img"/></div>
-                    <div className='myProject-content'>
-                        <div>
-                            <span className='myProject-date'>{project.progressPeriod}</span>
-                            <div className='flex justify-between'>
-                                <p className='myProject-title'>{project.mainTitle}</p>
-                                <div>
-                                    <img className='myProject-icon' src={IconMap[project.category]} alt="dummy"/>
-                                    <span>{project.category}</span>
+            {projects.map((project) => {
+                const progressRate = project.progressRate;
+                const currentStep = calculateStep(progressRate);
+
+                return (
+                    <div key={project.id} className='myProject-box'>
+                        <div><img className='myProject-image' src={project.image} alt="project-img"/></div>
+                        <div className='myProject-content'>
+                            <div>
+                                <span className='myProject-date'>{project.progressPeriod}</span>
+                                <div className='flex justify-between'>
+                                    <p className='myProject-title'>{project.mainTitle}</p>
+                                    <div>
+                                        <img className='myProject-icon' src={IconMap[project.category]} alt="dummy"/>
+                                        <span>{project.category}</span>
+                                    </div>
                                 </div>
-                            </div>
-                            <div className='myProject-progress'>
-                                <div className='progress-steps'>
-                                    {StepMap.map((index) => (
-                                        <div>
-                                            <div
-                                                key={index.step}
-                                                className={`step ${index.step <= step ? 'active' : ''}`}
-                                            >
-                                                {index.img}
+                                <div className='myProject-progress'>
+                                    <div className='progress-steps'>
+                                        {StepMap.map((index) => (
+                                            <div>
+                                                <div
+                                                    key={index.step}
+                                                    className={`step ${index.step <= currentStep ? 'active' : ''}`}
+                                                >
+                                                    {index.img}
+                                                </div>
+                                                <span
+                                                    style={{color: `${index.step <= currentStep ? '#00C78C' : '#C5EBE0'}`}}>{index.title}</span>
                                             </div>
-                                            <span
-                                                style={{color: `${index.step <= step ? '#00C78C' : '#C5EBE0'}`}}>{index.title}</span>
-                                        </div>
-                                    ))}
+                                        ))}
+                                    </div>
+                                    <div className='myProject-progress-gauge'
+                                         style={{width: `${(currentStep / 3) * 100}%`}}></div>
                                 </div>
-                                <div className='myProject-progress-gauge' style={{width: `${(step / 3) * 100}%`}}></div>
                             </div>
-                        </div>
-                        <div className='flex gap-x-3 justify-end'>
-                            <button className='myProject-button'>관리하기</button>
-                            <button className='myProject-button' onClick={() => {
-                                deleteProject(project.id)
-                            }}>삭제하기
-                            </button>
+                            <div className='flex gap-x-3 justify-end'>
+                                <button className='myProject-button'>관리하기</button>
+                                <button className='myProject-button' onClick={() => {
+                                    deleteProject(project.id)
+                                }}>삭제하기
+                                </button>
+                            </div>
                         </div>
                     </div>
-                </div>
-            ))}
+                )
+            })}
         </div>
     );
 };
