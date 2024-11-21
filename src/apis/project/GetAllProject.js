@@ -1,30 +1,26 @@
+// GetAllProject.js
 import axios from "axios";
 
-const GetAllProject = async (page = 0, size = 1, sort = ["createdAt"]) => {
+const GetAllProject = async (page = 0, size = 1) => {
   try {
-    // GET 요청 전송
     const response = await axios.get(
       `${process.env.REACT_APP_API_URL}/api/project/all`,
       {
         params: {
-          page, // 페이지 번호
-          size, // 페이지 크기
-          sort, // 정렬 기준
+          request: JSON.stringify({
+            page,
+            size,
+          }),
         },
       }
     );
 
-    // 응답 데이터 처리
     if (response.data.isSuccess) {
       console.log("프로젝트 조회 성공:", response.data.result.content);
-      return {
-        content: response.data.result.content, // 프로젝트 데이터
-        totalPages: response.data.result.totalPages, // 전체 페이지 수
-        totalElements: response.data.result.totalElements, // 전체 항목 수
-      };
+      return response.data.result.content; // Return only the content array
     } else {
       console.error("프로젝트 조회 실패:", response.data.message);
-      return null; // 실패 시 null 반환
+      return []; // Return an empty array on failure
     }
   } catch (error) {
     console.error(

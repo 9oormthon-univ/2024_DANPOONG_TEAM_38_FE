@@ -21,7 +21,12 @@ const ProjectList = () => {
   useEffect(() => {
     const fetchProjects = async () => {
       const data = await GetAllProject(currentPage - 1, itemsPerPage); // 페이지 수에 맞는 데이터 불러오기
-      setComments(data); // API 응답 데이터로 comments 상태 업데이트
+      if (Array.isArray(data)) {
+        setComments(data); // API 응답이 배열일 경우 comments 상태 업데이트
+      } else {
+        console.error("API 응답이 배열이 아닙니다:", data);
+        setComments([]); // 만약 배열이 아니면 빈 배열로 초기화
+      }
     };
 
     fetchProjects();
@@ -46,19 +51,23 @@ const ProjectList = () => {
       <Recent />
       <div className="pj-list-main">
         <div className="pj-preview-grid">
-          {comments.map((project, index) => (
-            <Preview
-              key={index}
-              title={project.mainTitle}
-              image={project.image}
-              category={project.category}
-              region={project.region}
-              progressPeriod={project.progressPeriod}
-              progressRate={project.progressRate}
-              achievedAmount={project.achievedAmount}
-              onClick={() => navigate(`/detail/${project.id}`)} // 클릭 시 상세 페이지로 이동
-            />
-          ))}
+          {comments.length > 0 ? (
+            comments.map((project, index) => (
+              <Preview
+                key={index}
+                title={project.mainTitle}
+                image={project.image}
+                category={project.category}
+                region={project.region}
+                progressPeriod={project.progressPeriod}
+                progressRate={project.progressRate}
+                achievedAmount={project.achievedAmount}
+                onClick={() => navigate(`/detail`)}
+              />
+            ))
+          ) : (
+            <div>프로젝트가 없습니다.</div>
+          )}
         </div>
         <div className="pj-list-btn">
           <button
