@@ -1,20 +1,45 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import GetProject from "../../../../apis/project/GetProject";
 
-const Planning = () => {
+const Planning = ({ project }) => {
+  const [projectDetails, setProjectDetails] = useState(null); // 프로젝트 상세 정보
+  useEffect(() => {
+    const fetchProjectDetails = async () => {
+      try {
+        if (!project.id) {
+          console.error("프로젝트 ID가 없습니다.");
+          return;
+        }
+
+        // GetProject API 호출, project.id를 전달
+        const response = await GetProject(project.id);
+        const currentProject = response.result; // GetProject가 반환하는 데이터 처리
+        console.log("이것좀봐", project.id, currentProject);
+        if (currentProject) {
+          setProjectDetails(currentProject);
+        } else {
+          console.error("프로젝트를 찾을 수 없습니다.");
+        }
+      } catch (error) {
+        console.error("프로젝트 상세 정보를 불러오는 데 실패했습니다.", error);
+      }
+    };
+
+    fetchProjectDetails();
+  }, [project.id]);
+
+  if (!projectDetails) {
+    return <div>프로젝트 정보를 불러오는 중...</div>; // 프로젝트 정보가 로드될 때까지 로딩 메시지 표시
+  }
+
   return (
-    // 기업 설명 api 연동 필요
     <div className="pj-plan-container">
-      test 추후 연동 필요
+      {/*  */}
       <br />
-      1. 기획 배경 및 목적 <br />
-      최근 전자상거래 시장이 빠르게 성장하고 있으며, 소비자들의 구매 습관도
-      오프라인에서 온라인으로 전환되고 있다. 그러나 지역 소상공인들은 디지털
-      전환에 필요한 기술과 자원 부족으로 인해 온라인 시장에서 경쟁력을 확보하지
-      못하고 있다. 이에 따라 소상공인들에게 디지털 전환을 지원하는 플랫폼을
-      제공하여 지역 경제 활성화를 도모하고, 지속 가능한 성장을 이루고자 본
-      기획을 제안한다. <br />
+      <h1> 연동 후 ui 수정 필요</h1>
+      1.프로젝트 소개:{projectDetails.introduction}
       2. 목표 <br />
-      첫째, 지역 소상공인 500곳 이상이 플랫폼에 가입하도록 유도한다.
+      {projectDetails.summary}
       <br />
       둘째, 소상공인의 월평균 매출을 20% 이상 증가시키는 것을 목표로 한다.{" "}
       <br />
@@ -23,13 +48,12 @@ const Planning = () => {
       한다.
       <br />
       3. 세부 실행 계획 <br />
-      1단계: 시장 조사 및 요구 분석 (1~2개월) 지역 소상공인의 디지털 전환 현황을
-      조사하고, 주요 문제점과 요구 사항을 파악한다.
+      {projectDetails.scheduleDescription}
       <br />
-      2단계: 플랫폼 개발 및 테스트 (3~6개월) UI/UX 설계 및 플랫폼 개발을
-      진행하며, 베타 테스트를 통해 실사용자들의 피드백을 수집하고 개선한다.{" "}
-      <br />
-      3단계: 홍보 및 확산 (6~12개월)
+      4.예산 설명
+      {projectDetails.budgetDescription}
+      5.기타
+      {projectDetails.teamDescription}
     </div>
   );
 };

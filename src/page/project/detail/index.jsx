@@ -29,7 +29,7 @@ const Detail = () => {
         )}
       </div>
       <div className="pj-detail-main-line"></div>
-      <Review />
+      <Review project={project} />
     </div>
   );
 };
