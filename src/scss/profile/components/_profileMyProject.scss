@@ -13,6 +13,7 @@
     }
 
     .profile-myProject-content {
+      flex: 1;
       padding: 2.625rem 1.375rem 1.125rem 2.375rem;
 
       .profile-myProject-date {
@@ -44,12 +45,66 @@
       }
 
       .profile-myProject-back-button {
+        margin-top: 2.5rem;
         margin-left: auto;
         transform: scaleX(-1);
         display: flex;
-        column-gap: 1rem;
         inline-size: fit-content;
       }
+
+      .profile-boost-box{
+        display: flex;
+        column-gap: 1rem;
+        border-radius: 45px;
+        border: 1px solid #F5F5F7;
+        padding: 0.5rem 2rem;
+
+        .profile-boost {
+          font-weight: 500;
+          font-size: 1.5rem;
+        }
+      }
     }
+
+    .profile-myProject-span-color {
+      color: #00C78C;
+    }
+
+    .profile-progress {
+      overflow: hidden;
+      margin-top: 6px;
+      border-radius: 44px;
+      height: 8px;
+      position: relative;
+      background-color: #D9D9D9;
+
+      .profile-progress-gauge {
+        border-radius: 44px;
+        position: absolute;
+        transform: translateY(-50%);
+        top: 50%;
+        height: 100%;
+        background-color: #00C78C;
+      }
+    }
+
+  }
+
+  .pagination-button {
+    padding: 8px 16px;
+    background-color: #f0f0f0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  .pagination-button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+
+  .current-page {
+    font-weight: bold;
+    margin: auto 0;
   }
 }

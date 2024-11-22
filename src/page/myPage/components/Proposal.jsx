@@ -5,9 +5,9 @@ import GetProposal from "../../../apis/myPage/GetProposal";
 import ProposalDetail from "./ProposalDetail";
 
 const Proposal = () => {
-    const [proposals, setProposals] = useState([]); // 받아온 데이터 상태
-    const [currentPage, setCurrentPage] = useState(0); // 현재 페이지 상태
-    const [totalPages, setTotalPages] = useState(1); // 전체 페이지 수 상태
+    const [proposals, setProposals] = useState([]);
+    const [currentPage, setCurrentPage] = useState(0);
+    const [totalPages, setTotalPages] = useState(1);
     const [detailProposal, setDetailProposal] = useState(null);
 
     const GetProposals = async (page) => {

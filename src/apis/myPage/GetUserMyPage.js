@@ -1,5 +1,5 @@
 import axios from 'axios';
-// 유저에 대한 마이페이지 정보 조회
+
 const GetUserMyPage = async () => {
     const accessToken = sessionStorage.getItem('accessToken');
 
@@ -9,6 +9,7 @@ const GetUserMyPage = async () => {
                 Authorization: `Bearer ${accessToken}`,
             },
         });
+        console.log(response)
         return response.data;
     } catch (error) {
         if (error.response.status === 401) {

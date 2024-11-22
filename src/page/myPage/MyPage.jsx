@@ -26,8 +26,8 @@ const MyPage = () => {
         const GetUserInfo = async () => {
             try {
                 const result = await GetUserMyPage();
-                setUserInfo(result.result)
                 console.log(result);
+                setUserInfo(result.result)
             } catch (error) {
                 console.log(error);
             }

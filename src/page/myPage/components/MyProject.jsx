@@ -29,7 +29,7 @@ const IconMap = {
 const MyProject = () => {
     const [projects, setProjects] = useState([]);
 
-    //내 프로젝트들 조회, progressRate 물어보기
+    //내 프로젝트들 조회
     useEffect(() => {
         const GetMyProjects = async () => {
             try {
