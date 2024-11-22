@@ -21,6 +21,9 @@ const Introduction = lazy(() => import("../page/introduction"));
 const Event = lazy(() => import("../page/showevent"));
 const List = lazy(() => import("../page/project/list"));
 const Search = lazy(() => import("../page/project/list/SearchList"));
+const CategoryList = lazy(() =>
+  import("../page/main/components/category/CategoryList")
+);
 const Upload = lazy(() => import("../page/project/upload"));
 const Detail = lazy(() => import("../page/project/detail"));
 const Boost = lazy(() => import("../page/project/boost"));
@@ -122,6 +125,14 @@ const router = createBrowserRouter([
         element: (
           <Suspense fallback={<Loading />}>
             <Search />
+          </Suspense>
+        ),
+      },
+      {
+        path: "category",
+        element: (
+          <Suspense fallback={<Loading />}>
+            <CategoryList />
           </Suspense>
         ),
       },

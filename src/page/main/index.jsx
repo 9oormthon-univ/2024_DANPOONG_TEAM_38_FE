@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Outlet } from "react-router-dom";
 import Search from "./components/Search";
 import Summation from "./components/summation";
@@ -8,15 +8,18 @@ import CompanyRank from "./components/companyrank";
 import Welcome from "./components/detail/Welcome";
 import Upload from "./components/detail/Upload";
 import Recent from "./Recent";
+
 const Main = () => {
+  const [recentImage, setRecentImage] = useState(""); // 최근 본 이미지 상태 관리
+
   return (
     <div className="main-container">
       <Outlet />
-      <Recent />
+      <Recent recentImage={recentImage} />
       <Search />
       <Summation />
       <Category />
-      <ProjectMore />
+      <ProjectMore setRecentImage={setRecentImage} />
       <CompanyRank />
       <Welcome />
       <Upload />
