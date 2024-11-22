@@ -1,5 +1,6 @@
 import axios from "axios";
 
+// CORS 오류 발생
 const GetMyReview = async (projectId) => {
   const accessToken = sessionStorage.getItem("accessToken");
   try {

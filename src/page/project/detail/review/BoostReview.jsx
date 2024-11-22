@@ -2,12 +2,11 @@ import React, { useEffect, useState } from "react";
 import Comment from "./Comment";
 import ReviewProfile from "./ReviewProfile";
 import GetReview from "../../../../apis/project/GetReview";
+import GetMyReview from "../../../../apis/project/GetMyReview";
 
 const BoostReview = ({ project }) => {
   const [reviews, setReviews] = useState([]); // 후기를 저장할 상태
-  const [myreviews, setMyReviews] = useState([]); // 후기를 저장할 상태
-
-  // 사용자가 쓴 댓글을 위해 토큰 확인 코드 필요
+  const [myreviews, setMyReviews] = useState(null); // 후기를 저장할 상태, 초기값은 null
 
   useEffect(() => {
     const fetchReviews = async () => {
@@ -39,11 +38,11 @@ const BoostReview = ({ project }) => {
           return;
         }
 
-        // GetReview API 호출, project.id와 reviewType을 전달
-        const response = await setMyReviews(project.id);
+        // GetMyReview API 호출, project.id 전달
+        const response = await GetMyReview(project.id);
 
         if (response && response.length > 0) {
-          setMyReviews(response); // 응답 데이터로 리뷰 목록을 업데이트
+          setMyReviews(response[0]); // 첫 번째 리뷰만 사용한다고 가정
         } else {
           console.error("후기를 찾을 수 없습니다.");
         }
@@ -51,6 +50,7 @@ const BoostReview = ({ project }) => {
         console.error("후기를 불러오는 데 실패했습니다.", error);
       }
     };
+
     fetchMyReviews();
     fetchReviews();
   }, [project.id]);
@@ -58,8 +58,9 @@ const BoostReview = ({ project }) => {
   return (
     <div className="pj-boost-reviews-container">
       <div className="pj-boost-reviews-comment-container">
-        {/* 후원자 기업 정보 및 댓글 API 연동 필요 ,토큰 연동 필요*/}
-        <ReviewProfile key={myreviews.id} myreviews={myreviews} />
+        {/* 사용자가 쓴 리뷰 프로필 */}
+        {myreviews && <ReviewProfile myreviews={myreviews} />}
+
         {/* 각 후기를 댓글로 표시 */}
         {reviews.length > 0 ? (
           reviews.map((review) => <Comment key={review.id} review={review} />)

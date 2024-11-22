@@ -5,10 +5,14 @@ const Layout = lazy(() => import("../layout/Layout"));
 const Loading = lazy(() => import("../component/Loading"));
 
 const Login = lazy(() => import("../page/login/Login"));
-const KakaoLoading = lazy(() => import("../page/login/components/KakaoLoading"));
+const KakaoLoading = lazy(() =>
+  import("../page/login/components/KakaoLoading")
+);
 const LoginType = lazy(() => import("../page/login/components/LoginType"));
 const Signup = lazy(() => import("../page/signup/Signup"));
-const SignupCompany = lazy(() => import("../page/signup/components/SignupCompany"));
+const SignupCompany = lazy(() =>
+  import("../page/signup/components/SignupCompany")
+);
 const MyPage = lazy(() => import("../page/myPage/MyPage"));
 const MyPageEdit = lazy(() => import("../page/myPage/MyPageEdit"));
 const Profile = lazy(() => import("../page/profile/Profile"));
@@ -16,6 +20,7 @@ const Main = lazy(() => import("../page/main"));
 const Introduction = lazy(() => import("../page/introduction"));
 const Event = lazy(() => import("../page/showevent"));
 const List = lazy(() => import("../page/project/list"));
+const Search = lazy(() => import("../page/project/list/SearchList"));
 const Upload = lazy(() => import("../page/project/upload"));
 const Detail = lazy(() => import("../page/project/detail"));
 const Boost = lazy(() => import("../page/project/boost"));
@@ -35,9 +40,9 @@ const router = createBrowserRouter([
       {
         path: "api/auth/kakao/login",
         element: (
-            <Suspense fallback={<Loading />}>
-              <KakaoLoading />
-            </Suspense>
+          <Suspense fallback={<Loading />}>
+            <KakaoLoading />
+          </Suspense>
         ),
       },
       {
@@ -59,9 +64,9 @@ const router = createBrowserRouter([
       {
         path: "signup/company",
         element: (
-            <Suspense fallback={<Loading />}>
-              <SignupCompany />
-            </Suspense>
+          <Suspense fallback={<Loading />}>
+            <SignupCompany />
+          </Suspense>
         ),
       },
       {
@@ -83,17 +88,17 @@ const router = createBrowserRouter([
       {
         path: "myPage/edit",
         element: (
-            <Suspense fallback={<Loading />}>
-              <MyPageEdit />
-            </Suspense>
+          <Suspense fallback={<Loading />}>
+            <MyPageEdit />
+          </Suspense>
         ),
       },
       {
         path: "profile/:id",
         element: (
-            <Suspense fallback={<Loading />}>
-              <Profile />
-            </Suspense>
+          <Suspense fallback={<Loading />}>
+            <Profile />
+          </Suspense>
         ),
       },
       {
@@ -109,6 +114,14 @@ const router = createBrowserRouter([
         element: (
           <Suspense fallback={<Loading />}>
             <List />
+          </Suspense>
+        ),
+      },
+      {
+        path: "search",
+        element: (
+          <Suspense fallback={<Loading />}>
+            <Search />
           </Suspense>
         ),
       },
