@@ -83,7 +83,7 @@ const BoostRank = ({ projectDetails, projectId, projectName }) => {
               <img
                 src={rank.image}
                 alt={`${rank.companyName} 로고`}
-                style={{ width: "50px", height: "50px", borderRadius: "50%" }}
+                style={{ width: "68px", height: "68px", borderRadius: "50%" }}
               />
             </div>
             <div className="pj-detail-boost-rank-content">
