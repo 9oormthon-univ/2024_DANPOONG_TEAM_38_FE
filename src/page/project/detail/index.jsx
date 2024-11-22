@@ -10,7 +10,7 @@ const Detail = () => {
   const path = location.pathname;
   const { project } = location.state || {}; // 프로젝트 내용 전달 받음
 
-  const hideContentPath = ["/detail/boost"];
+  const hideContentPath = ["/boost"];
 
   const showContent = !hideContentPath.includes(path);
 
@@ -20,16 +20,15 @@ const Detail = () => {
       <div className="pj-detail-main-container">
         {project ? (
           <>
-            {showContent && <Show project={project} />}
+            <Show project={project} />
             {showContent && <ComBoost project={project} />}
-            <Outlet />
           </>
         ) : (
           <div>프로젝트가 없어요!</div>
         )}
       </div>
       <div className="pj-detail-main-line"></div>
-      <Review project={project} />
+      {showContent && <Review project={project} />}
     </div>
   );
 };

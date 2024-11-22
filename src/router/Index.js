@@ -143,17 +143,16 @@ const router = createBrowserRouter([
             <Detail />
           </Suspense>
         ),
-        children: [
-          {
-            path: "boost",
-            element: (
-              <Suspense fallback={<Loading />}>
-                <Boost />
-              </Suspense>
-            ),
-          },
-        ],
       },
+      {
+        path: "/boost",
+        element: (
+          <Suspense fallback={<Loading />}>
+            <Boost />
+          </Suspense>
+        ),
+      },
+
       {
         path: "upload",
         element: (
