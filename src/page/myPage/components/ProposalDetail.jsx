@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import GetProposalDetail from "../../../apis/myPage/GetProposalDetail";
 import {ReactComponent as BackArrowIcon} from '../../../assets/myPage/BackArrowIcon.svg';
-import DummyImg2 from "../../../assets/myPage/DummyImg2.png";
 
 const ProposalDetail = ({detailProposal, onBack}) => {
     const [proposalDetail, setProposalDetail] = useState(null);
@@ -16,24 +15,6 @@ const ProposalDetail = ({detailProposal, onBack}) => {
         }
     };
 
-    // content
-    // :
-    // "This is a sample content for user 4."
-    // createdAt
-    // :
-    // "2024.11.21 02:18"
-    // id
-    // :
-    // 1
-    // image
-    // :
-    // "https://fundboost-bucket.s3.ap-northeast-2.amazonaws.com/logo.png"
-    // title
-    // :
-    // "Sample Proposal for User 4"
-    // userName
-    // :
-    // null
     useEffect(() => {
         fetchProposals(detailProposal);
     }, []);
