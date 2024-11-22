@@ -31,7 +31,7 @@ const ProjectList = () => {
 
     fetchProjects();
   }, [currentPage]);
-
+  console.log(comments);
   const handlePrev = () => {
     if (currentPage > 1) setCurrentPage((prev) => prev - 1);
   };

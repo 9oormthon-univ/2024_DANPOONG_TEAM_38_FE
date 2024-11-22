@@ -6,6 +6,8 @@ import GetBoostedProjectInfo from "../../../apis/project/GetBoostedProjectInfo";
 const ComBoost = ({ project }) => {
   const navigate = useNavigate();
   const [projectDetails, setProjectDetails] = useState(null);
+  const [projectName, setProjectName] = useState(null);
+  const [projectId, setProjectId] = useState(null);
 
   useEffect(() => {
     const fetchProjectDetails = async () => {
@@ -17,9 +19,12 @@ const ComBoost = ({ project }) => {
 
         const response = await GetBoostedProjectInfo(project.id);
         const currentProject = response.result;
-        console.log(project.id, currentProject);
+        const currentTitle = project.mainTitle;
+        console.log("확인", currentTitle, project.id, currentProject);
         if (currentProject) {
           setProjectDetails(currentProject);
+          setProjectName(currentTitle);
+          setProjectId(project.id);
         } else {
           console.error("프로젝트를 찾을 수 없습니다.");
         }
@@ -65,7 +70,11 @@ const ComBoost = ({ project }) => {
         </div>
         {/* 기업 후원 순위 랭킹 api 필요  /api/project/boosted-ranking*/}
 
-        <BoostRank projectDetails={projectDetails} />
+        <BoostRank
+          projectDetails={projectDetails}
+          projectName={projectName}
+          projectId={projectId}
+        />
       </div>
     </div>
   );

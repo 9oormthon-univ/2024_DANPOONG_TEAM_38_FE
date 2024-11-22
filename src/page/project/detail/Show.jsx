@@ -20,9 +20,8 @@ const Show = ({ project }) => {
           return;
         }
 
-        // GetProject API 호출, project.id를 전달
         const response = await GetProject(project.id);
-        const currentProject = response.result; // GetProject가 반환하는 데이터 처리
+        const currentProject = response.result;
         console.log(project.id, currentProject);
         if (currentProject) {
           setProjectDetails(currentProject);
@@ -35,7 +34,7 @@ const Show = ({ project }) => {
     };
 
     fetchProjectDetails();
-  }, [project.id]); // project.id가 변경될 때마다 실행
+  }, [project.id]);
 
   const handleNext = () => {
     if (currentIndex < images.length - 1) {
