@@ -1,27 +1,50 @@
-import React from "react";
-
+import React, { useState, useEffect } from "react";
 import { ReactComponent as Share } from "../../../../assets/component/project/share.svg";
 import { ReactComponent as Logo } from "../../../../assets/component/project/logo.svg";
+import GetReview from "../../../../apis/project/GetReview";
 
-const Deadline = () => {
-  const content = `
-안녕하세요! 😊 오늘은 지난 한 달간 진행했던 **[프로젝트명]**의 마무리 소식을 전하려고 합니다.긴 여정을 끝내고 이렇게 마침표를 찍으니 시원섭섭한 기분이 드네요. 이 프로젝트를 통해 성장한 점, 느낀 점, 그리고 아쉬운 점들을 정리해보려 합니다.
+const Deadline = ({ project }) => {
+  const [reviews, setReviews] = useState([]); // 후기를 저장할 상태
 
-🗓 프로젝트 개요
-이번 프로젝트는 [프로젝트의 목적/내용]을 목표로 시작되었습니다.초반에는 [시작 배경, 주요 과제, 목표 설정]에 대한 고민이 많았는데, 덕분에 방향성을 명확히 잡을 수 있었습니다.
+  useEffect(() => {
+    const fetchReviews = async () => {
+      try {
+        if (!project.id) {
+          console.error("프로젝트 ID가 없습니다.");
+          return;
+        }
 
-  `;
+        const reviewType = "COMPLETION_REVIEW"; // 후기를 조회할 타입
+
+        // GetReview API 호출, project.id와 reviewType을 전달
+        const response = await GetReview(project.id, reviewType);
+
+        if (response && response.length > 0) {
+          setReviews(response); // 응답 데이터로 리뷰 목록을 업데이트
+        } else {
+          console.error("마감후기를 내용을 찾을 수 없습니다.");
+        }
+      } catch (error) {
+        console.error("후기를 불러오는 데 실패했습니다(에러).", error);
+      }
+    };
+
+    fetchReviews();
+  }, [project.id]);
+
+  // 첫 번째 리뷰 가져오기 (API가 배열을 반환하므로)
+  const firstReview = reviews.length > 0 ? reviews[0] : null;
 
   return (
-    // 마감 후기 내용 없는 조건 수정 필요
     <div className="pj-deadline-container">
-      {content && content.trim() ? (
+      {firstReview ? (
         <>
           <div className="pj-deadline-title-container">
-            {/* 마감후기 작성 내용 API 연동 필요 */}
             <div className="pj-deadline-title">
-              마감후기타이틀입니다
-              <div className="pj-deadline-sub-title">0000.00.00(0)</div>
+              {firstReview.title}
+              <div className="pj-deadline-sub-title">
+                {new Date(firstReview.createdAt).toLocaleDateString("ko-KR")}
+              </div>
             </div>
             <div className="pj-share-icon">
               <Share />
@@ -29,7 +52,7 @@ const Deadline = () => {
           </div>
           <div className="pj-deadline-line"></div>
           {/* 마감 후기 작성 내용 API */}
-          <div className="pj-deadline-content">{content}</div>
+          <div className="pj-deadline-content">{firstReview.description}</div>
         </>
       ) : (
         <div className="pj-deadline-non-content">
