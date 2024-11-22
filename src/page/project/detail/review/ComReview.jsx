@@ -25,10 +25,10 @@ const ComReview = ({ project }) => {
         if (response && response.length > 0) {
           setReviews(response); // 응답 데이터로 리뷰 목록을 업데이트
         } else {
-          console.error("후기를 찾을 수 없습니다.");
+          console.error("후기를 내용을 찾을 수 없습니다.");
         }
       } catch (error) {
-        console.error("후기를 불러오는 데 실패했습니다.", error);
+        console.error("후기를 불러오는 데 실패했습니다(에러).", error);
       }
     };
 
