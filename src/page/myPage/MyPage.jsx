@@ -4,6 +4,7 @@ import {ReactComponent as BlogLinkIcon} from "../../assets/myPage/BlogLinkIcon.s
 import MyProject from "./components/MyProject";
 import Proposal from "./components/Proposal";
 import GetUserMyPage from "../../apis/myPage/GetUserMyPage";
+import MyBoost from "./components/MyBoost";
 
 const menuItems = [
     {key: 'myProject', label: '나의 프로젝트'},
@@ -82,7 +83,7 @@ const MyPage = () => {
             <section>
                 {menu === 'myProject' && <MyProject/>}
                 {menu === 'interestProject' && <div>관심 프로젝트 내용</div>}
-                {menu === 'supportProject' && <div>후원 프로젝트 내용</div>}
+                {menu === 'supportProject' && <MyBoost/>}
                 {menu === 'myReview' && <div>내 후기 내용</div>}
                 {menu === 'proposal' && <Proposal/>}
             </section>

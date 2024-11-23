@@ -17,6 +17,7 @@ const SignupCompany = () => {
         confirmPassword: '',
         code: '',
     });
+    const [isVisible, setIsVisible] = useState(false);
 
     const InputChange = (e) => {
         const {id, value} = e.target;
@@ -56,6 +57,7 @@ const SignupCompany = () => {
     const clickSendEmail = async () => {
         const result = await PostEmailSend(formData.email);
         if (result.status === 200) {
+            setIsVisible(true);
             alert('인증번호가 전송되었습니다.')
         }
     }
@@ -75,20 +77,28 @@ const SignupCompany = () => {
                     <img className='signup-company-image' src={CompanyUser} alt="CommpanyUser"/>
                 </div>
                 <div className='flex flex-col gap-y-5'>
-                    <input type="text" id="businessNumber" name="businessNumber" value={formData.businessNumber}
-                           onChange={InputChange} placeholder='사업자 번호'/>
-                    <button onClick={clickBusinessNumber}>사업자 인증</button>
-
-                    <input type="email" id="email" name="email" value={formData.email} onChange={InputChange}
-                           placeholder='이메일'/>
-                    <button onClick={clickSendEmail}>이메일 인증</button>
-                    <input type="text" id="code" name="code" value={formData.code} onChange={InputChange}
-                           placeholder='코드 입력'/>
-                    <button onClick={clickVerifyEmail}>인증확인</button>
-
-                    <input type="password" id="password" name="password" value={formData.password}
+                    <div className='signup-company-input'>
+                        <input type="text" id="businessNumber" name="businessNumber" value={formData.businessNumber}
+                               onChange={InputChange} placeholder='사업자 번호'/>
+                        <button onClick={clickBusinessNumber} className='signup-company-input-button'>사업자 인증</button>
+                    </div>
+                    <div className='signup-company-input'>
+                        <input type="email" id="email" name="email" value={formData.email} onChange={InputChange}
+                               placeholder='이메일'/>
+                        <button onClick={clickSendEmail} className='signup-company-input-button'>이메일 인증</button>
+                    </div>
+                    {isVisible &&
+                        <div className='signup-company-input'>
+                            <input type="text" id="code" name="code" value={formData.code} onChange={InputChange}
+                                   placeholder='코드 입력'/>
+                            <button onClick={clickVerifyEmail} className='signup-company-input-button'>인증확인</button>
+                        </div>
+                    }
+                    <input className='signup-company-input' type="password" id="password" name="password"
+                           value={formData.password}
                            onChange={InputChange} placeholder='비밀번호 입력'/>
-                    <input type="password" id="confirmPassword" name="confirmPassword" value={formData.confirmPassword}
+                    <input className='signup-company-input' type="password" id="confirmPassword" name="confirmPassword"
+                           value={formData.confirmPassword}
                            onChange={InputChange} placeholder='비밀번호를 한번 더 작성해주세요'/>
                     <div className='flex gap-x-4'>
                         <button className='signup-company-button' onClick={() => navigate('/signup')}>취소</button>
