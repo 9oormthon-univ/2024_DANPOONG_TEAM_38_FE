@@ -16,7 +16,7 @@ const Header = () => {
   const menu = [
     { name: "서비스 소개", path: "/introduction" },
     { name: "프로젝트 리스트", path: "/list" },
-    { name: "프로젝트 업로드", path: "/nologin" },
+    { name: "프로젝트 업로드", path: "/login" },
     { name: "이벤트", path: "/event" },
   ];
   const menuok = [
@@ -32,7 +32,6 @@ const Header = () => {
   useEffect(() => {
     const token = sessionStorage.getItem("accessToken");
     setIsLoggedIn(!!token);
-
   }, [location.pathname]);
 
   const isActive = (menuPath) => location.pathname === menuPath;
