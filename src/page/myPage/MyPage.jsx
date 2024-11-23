@@ -5,6 +5,7 @@ import MyProject from "./components/MyProject";
 import Proposal from "./components/Proposal";
 import GetUserMyPage from "../../apis/myPage/GetUserMyPage";
 import MyBoost from "./components/MyBoost";
+import {ReactComponent as Logo} from "../../assets/component/project/logo.svg";
 
 const menuItems = [
     {key: 'myProject', label: '나의 프로젝트'},
@@ -16,7 +17,7 @@ const menuItems = [
 
 const MyPage = () => {
     const [menu, setMenu] = useState('myProject');
-    const [userInfo,setUserInfo] = useState(null);
+    const [userInfo, setUserInfo] = useState(null);
     const type = sessionStorage.getItem("type");
 
     const filteredMenuItems = type === 'USER'
@@ -82,9 +83,17 @@ const MyPage = () => {
             </section>
             <section>
                 {menu === 'myProject' && <MyProject/>}
-                {menu === 'interestProject' && <div className='text-center text-2xl font-semibold mb-8'>관심 프로젝트가 없습니다.</div>}
+                {menu === 'interestProject' &&
+                    <div className="myPage-no">
+                        <Logo/>
+                        등록된 마감 후기가 없습니다.
+                    </div>}
                 {menu === 'supportProject' && <MyBoost id={userInfo?.userId}/>}
-                {menu === 'myReview' && <div className='text-center text-2xl font-semibold mb-8'>내 후기가 없습니다.</div>}
+                {menu === 'myReview' &&
+                    <div className="myPage-no">
+                        <Logo/>
+                        등록된 마감 후기가 없습니다.
+                    </div>}
                 {menu === 'proposal' && <Proposal/>}
             </section>
         </div>
