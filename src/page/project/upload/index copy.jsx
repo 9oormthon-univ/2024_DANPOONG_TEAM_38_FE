@@ -7,7 +7,6 @@ import PjIntroduce from "./PjIntroduce";
 
 import createProject from "../../../apis/project/PostCreateProject";
 import { useOutletContext } from "react-router-dom";
-import PjPreparation from "./PjPreparation";
 
 const Upload = () => {
   const [mainTitle, setMainTitle] = useState("");
@@ -60,12 +59,14 @@ const Upload = () => {
   console.log("카테고리 확인", category);
   return (
     <div className="upload-container">
+      <Search />
       <div className="upload-main-container">
         <div className="upload-main-logo-container">
           <Logo />
         </div>
         <div className="upload-main-write-container">
-          <PjPreparation />
+          <PjCategory setCategory={setCategory} /> {/* setCategory 전달 */}
+          <PjIntroduce />
         </div>
       </div>
     </div>

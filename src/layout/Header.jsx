@@ -5,9 +5,11 @@ import { ReactComponent as Fundboost } from "../assets/applogo/fundboost.svg";
 import { ReactComponent as Back } from "../assets/component/back.svg";
 import PostCompanyLogout from "../apis/login/company/PostCompanyLogout";
 import DeleteKakaoLogout from "../apis/login/DeleteKakaoLogout";
+import UpHeader from "../page/project/upload/UpHeader";
 
 const Header = () => {
   const location = useLocation();
+  const path = location.pathname;
   const navigate = useNavigate();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
@@ -18,6 +20,8 @@ const Header = () => {
     { name: "이벤트", path: "/event" },
   ];
 
+  const showUpHeader = ["/write", "/fund", "/plan", "/createuser"];
+  const showHeader = showUpHeader.includes(path);
   useEffect(() => {
     const token = sessionStorage.getItem("accessToken");
     setIsLoggedIn(!!token);
@@ -95,6 +99,7 @@ const Header = () => {
           )}
         </div>
       </div>
+      {showHeader && <UpHeader />}
     </div>
   );
 };
