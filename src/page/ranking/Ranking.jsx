@@ -3,6 +3,7 @@ import GetComRanking from "../../apis/project/GetComRanking";
 import AwardIcon from "../../assets/ranking/AwardIcon.png";
 import { ReactComponent as Next } from "../../assets/component/BigNext.svg";
 import { ReactComponent as Back } from "../../assets/component/BigBack.svg";
+import {useNavigate} from "react-router-dom";
 
 const menu = [
     {name: "주간", sortType: "weekly"},
@@ -12,6 +13,7 @@ const menu = [
 ];
 
 const Ranking = () => {
+    const navigate = useNavigate();
     const [activeMenu, setActiveMenu] = useState(menu[0].sortType);
     const [companyRankData, setCompanyRankData] = useState([]);
 
@@ -84,6 +86,7 @@ const Ranking = () => {
                         return (
                             index === 0 ?
                                 <div className='ranking-first-company-box'
+                                     onClick={()=>navigate(`/profile/${company.id}`)}
                                      key={company.id}>
                                     <div className='relative'>
                                         <img src={company.image} alt="" style={{minWidth:'350px',maxWidth:'350px',minHeight:'350px',maxHeight:'350px'}}/>
@@ -104,7 +107,9 @@ const Ranking = () => {
                                     </div>
                                 </div>
                                 :
-                                <div className='ranking-company' key={company.id}>
+                                <div className='ranking-company' key={company.id}
+                                     onClick={()=>navigate(`/profile/${company.id}`)}
+                                >
                                     <div className='font-extrabold text-[45px]'>{(index + 1).toString().padStart(2, '0')}</div>
                                     <div className='flex-1'>
                                         <h4 className='ranking-company-name'>{company.name}</h4>

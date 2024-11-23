@@ -4,6 +4,7 @@ import ProfileMyProject from "./components/ProfileMyProject";
 import GetUserProfile from "../../apis/profile/GetUserProfile";
 import MoveIcon from "../../assets/profile/MoveIcon.png"
 import ProposalWrite from "./components/ProposalWrite";
+import {useParams} from "react-router-dom";
 
 const menuItems = [
     {key: 'profileMyProject', label: '사용자의 프로젝트'},
@@ -12,6 +13,7 @@ const menuItems = [
 ];
 
 const Profile = () => {
+    const {id} = useParams();
     const [menu, setMenu] = useState(null);
     const [userInfo, setUserInfo] = useState(null);
     const [proposalWrite, setProposalWrite] = useState(false);
@@ -23,7 +25,7 @@ const Profile = () => {
     useEffect(() => {
         const GetUserInfo = async () => {
             try {
-                const result = await GetUserProfile(14);
+                const result = await GetUserProfile(id);
                 setUserInfo(result.result)
                 setMenu(result.result.company ? 'boostProject' : 'profileMyProject')
                 console.log(result.result);
@@ -74,15 +76,15 @@ const Profile = () => {
                             ))}
                         </section>
                         <section>
-                            {menu === 'profileMyProject' && <ProfileMyProject isCompany={false}/>}
-                            {menu === 'boostProject' && <ProfileMyProject isCompany={true}/>}
+                            {menu === 'profileMyProject' && <ProfileMyProject isCompany={false} id={id}/>}
+                            {menu === 'boostProject' && <ProfileMyProject isCompany={true} id={id}/>}
                             {menu === 'likeProject' && <div>좋아요한 프로젝트 내용</div>}
                         </section>
                     </>
                 }
 
                 {proposalWrite &&
-                    <ProposalWrite onBack={() => setProposalWrite(false)}/>
+                    <ProposalWrite onBack={() => setProposalWrite(false)} id={id}/>
                 }
             </div>
             {

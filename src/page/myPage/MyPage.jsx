@@ -83,7 +83,7 @@ const MyPage = () => {
             <section>
                 {menu === 'myProject' && <MyProject/>}
                 {menu === 'interestProject' && <div className='text-center text-2xl font-semibold mb-8'>관심 프로젝트가 없습니다.</div>}
-                {menu === 'supportProject' && <MyBoost/>}
+                {menu === 'supportProject' && <MyBoost id={userInfo?.userId}/>}
                 {menu === 'myReview' && <div className='text-center text-2xl font-semibold mb-8'>내 후기가 없습니다.</div>}
                 {menu === 'proposal' && <Proposal/>}
             </section>
