@@ -10,7 +10,7 @@ const LoginType = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const category = location.state;
-    const KAKAO_LOGIN_URL = `https://kauth.kakao.com/oauth/authorize?client_id=${process.env.REACT_APP_KAKAO_REST_API_KEY}&redirect_uri=http://localhost:3000/api/auth/kakao/login&response_type=code`;
+    const KAKAO_LOGIN_URL = `https://kauth.kakao.com/oauth/authorize?client_id=${process.env.REACT_APP_KAKAO_REST_API_KEY}&redirect_uri=https://2024-danpoong-team-38-fe.vercel.app/api/auth/kakao/login&response_type=code`;
 
     const clickKakaoLogin = () => {
         window.location.href = KAKAO_LOGIN_URL;
