@@ -123,6 +123,7 @@ const Ranking = () => {
                                 >
                                     <div
                                         className='font-extrabold text-[45px]'>{(index + 1).toString().padStart(2, '0')}</div>
+
                                     <div className='flex-1'>
                                         <h4 className='ranking-company-name'>{company.name}</h4>
                                         <div className='flex'>
