@@ -82,9 +82,9 @@ const MyPage = () => {
             </section>
             <section>
                 {menu === 'myProject' && <MyProject/>}
-                {menu === 'interestProject' && <div>관심 프로젝트 내용</div>}
+                {menu === 'interestProject' && <div className='text-center text-2xl font-semibold mb-8'>관심 프로젝트가 없습니다.</div>}
                 {menu === 'supportProject' && <MyBoost/>}
-                {menu === 'myReview' && <div>내 후기 내용</div>}
+                {menu === 'myReview' && <div className='text-center text-2xl font-semibold mb-8'>내 후기가 없습니다.</div>}
                 {menu === 'proposal' && <Proposal/>}
             </section>
         </div>

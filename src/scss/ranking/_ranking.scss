@@ -1,0 +1,114 @@
+.ranking-container {
+  .ranking-h3 {
+    font-weight: 800;
+    font-size: 2.25rem;
+    margin-bottom: 2rem;
+  }
+
+  .ranking-info {
+    font-size: 1.25rem;
+    font-weight: 400;
+  }
+
+  .ranking-first-company-name {
+    font-size: 3.125rem;
+    color: #FF5C2F;
+    font-weight: 700;
+  }
+
+  .ranking-menus {
+    display: flex;
+    column-gap: 2.25rem;
+    margin: 6.25rem 0 2.5rem 0;
+    color: #7F7F7F;
+    font-size: 1.5rem;
+
+    .ranking-menu {
+      font-weight: 400;
+      font-size: 1.5rem;
+      position: relative;
+    }
+
+    .active {
+      color: #00C78C;
+      font-weight: 700;
+
+      &::after {
+        content: "ㆍ";
+        position: absolute;
+        top: -25px;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+    }
+  }
+
+  .ranking-first-company-image {
+    margin: auto auto;
+    max-height: 500px;
+    max-width: 500px;
+  }
+
+  .ranking-companys {
+    display: flex;
+    flex-direction: column;
+    row-gap: 3.625rem;
+    margin-bottom: 4rem;
+
+
+    .ranking-first-company-box {
+      display: flex;
+      column-gap: 3rem;
+      box-shadow: 0 2px 4px 0 #00000040;
+      padding: 2.625rem 4rem 4rem 2rem;
+      border-radius: 30px;
+
+
+      .ranking-first-company-name1 {
+        font-size: 2.625rem;
+        font-weight: 700;
+      }
+
+      .ranking-first-company-h5 {
+        color: #424242;
+        font-weight: 700;
+        font-size: 1.5rem;
+      }
+
+      .ranking-first-company-number {
+        color: #00C78C;
+        font-weight: 600;
+        font-size: 60px;
+      }
+
+      .font-Bruno {
+        font-family: "Bruno Ace", sans-serif;
+      }
+    }
+
+    .ranking-company {
+      display: flex;
+      column-gap: 3.25rem;
+
+      .ranking-company-name {
+        font-weight: 600;
+        font-size: 2.25rem;
+        margin-bottom: 1.625rem;
+      }
+
+      .ranking-company-h5 {
+        color: #424242;
+        font-weight: 700;
+        font-size: 1.375rem;
+        margin-bottom: 1rem;
+      }
+
+      .ranking-company-number {
+        color: #00C78C;
+        font-weight: 600;
+        font-size: 1.875rem;
+        margin-bottom: 2rem;
+      }
+    }
+  }
+}

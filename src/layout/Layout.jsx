@@ -17,12 +17,18 @@ const Layout = () => {
   ];
   const showFooter = !hideFooterPaths.includes(path);
 
+  const hideHeaderPaths = [
+      "/introduction",
+  ];
+  const hideHeader = !hideHeaderPaths.includes(path);
+
+
   // 상태를 관리하는 로직
   const isLoggedIn = !!sessionStorage.getItem("accessToken");
   const accessToken = sessionStorage.getItem("accessToken");
   return (
     <div className="layout-container">
-      <Header />
+      {hideHeader && <Header />}
       <div>
         {/* Outlet의 context를 활용하여 isLoggedIn 전달 */}
         <Outlet context={{ isLoggedIn, accessToken }} />

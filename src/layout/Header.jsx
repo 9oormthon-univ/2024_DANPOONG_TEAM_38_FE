@@ -21,7 +21,6 @@ const Header = () => {
   useEffect(() => {
     const token = sessionStorage.getItem("accessToken");
     setIsLoggedIn(!!token);
-    console.log("토큰확인좀", token);
   }, [location.pathname]);
 
   const isActive = (path) => location.pathname === path;

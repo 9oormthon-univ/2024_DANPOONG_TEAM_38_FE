@@ -7,7 +7,7 @@ const CompanyRank = () => {
   const navigate = useNavigate();
 
   const detailHandler = () => {
-    navigate("/list");
+    navigate("/ranking");
   };
   return (
     <div className="rank-container">
