@@ -3,8 +3,10 @@ import CircleProgressBar from "../../profile/components/CircleProgressBar";
 import MoneyIcon from "../../../assets/profile/MoneyIcon.png";
 import BackArrowIcon from "../../../assets/myPage/BackArrowIcon.svg";
 import GetCompanyBoost from "../../../apis/profile/GetCompanyBoost";
+import {useNavigate} from "react-router-dom";
 
-const MyBoost = () => {
+const MyBoost = ({id}) => {
+    const navigate = useNavigate();
     const [profileProjects, setProfileProjects] = useState([]);
     const [currentPage, setCurrentPage] = useState(0);
     const [totalPages, setTotalPages] = useState(1);
@@ -22,7 +24,7 @@ const MyBoost = () => {
             }
         }
 
-        GetProfileBoost(14, currentPage);
+        GetProfileBoost(id, currentPage);
     }, [currentPage]);
 
     const handlePageChange = (newPage) => {
@@ -51,8 +53,9 @@ const MyBoost = () => {
                                 <span className='profile-boost'>{project.boostedAmount}원 후원</span>
                             </div>
                         </div>
-                        <a href="" className='profile-myProject-back-button'><img src={BackArrowIcon}
-                                                                                  alt="backIcon"/></a>
+                        <button onClick={() => navigate('/detail', {state: {project}})}
+                                className='profile-myProject-back-button'><img src={BackArrowIcon} alt="backIcon"/>
+                        </button>
                     </div>
                 </div>
             ))}

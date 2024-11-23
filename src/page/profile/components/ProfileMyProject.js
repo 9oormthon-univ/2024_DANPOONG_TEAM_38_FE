@@ -4,8 +4,10 @@ import GetUserProfileProject from "../../../apis/profile/GetUserProfileProject";
 import GetCompanyBoost from "../../../apis/profile/GetCompanyBoost";
 import MoneyIcon from "../../../assets/profile/MoneyIcon.png";
 import CircleProgressBar from "./CircleProgressBar";
+import {useNavigate} from "react-router-dom";
 
-const ProfileMyProject = ({isCompany}) => {
+const ProfileMyProject = ({isCompany, id}) => {
+    const navigate = useNavigate();
     const [profileProjects, setProfileProjects] = useState([]);
     const [currentPage, setCurrentPage] = useState(0);
     const [totalPages, setTotalPages] = useState(1);
@@ -36,9 +38,9 @@ const ProfileMyProject = ({isCompany}) => {
         }
 
         if (isCompany) {
-            GetCompanyProfileBoost(14, currentPage);
+            GetCompanyProfileBoost(id, currentPage);
         } else {
-            GetUserProfileProjects(14, currentPage);
+            GetUserProfileProjects(id, currentPage);
         }
     }, [currentPage]);
 
@@ -60,11 +62,11 @@ const ProfileMyProject = ({isCompany}) => {
                         {isCompany ?
                             <div className='flex gap-x-12 mt-[31px] items-center'>
                                 <div className='text-center flex flex-col'>
-                                    <CircleProgressBar size={65} progress={project.progressRate} strokeWidth={4} />
+                                    <CircleProgressBar size={65} progress={project.progressRate} strokeWidth={4}/>
                                     <span className='font-normal'>기여도</span>
                                 </div>
                                 <div className='profile-boost-box'>
-                                    <img src={MoneyIcon} alt="" style={{width:'30px',height:'30px'}}/>
+                                    <img src={MoneyIcon} alt="" style={{width: '30px', height: '30px'}}/>
                                     <span className='profile-boost'>{project.boostedAmount}원 후원</span>
                                 </div>
                             </div>
@@ -83,8 +85,9 @@ const ProfileMyProject = ({isCompany}) => {
                                 </div>
                             </div>
                         }
-                        <a href="" className='profile-myProject-back-button'><img src={BackArrowIcon}
-                                                                                  alt="backIcon"/></a>
+                        <buuton onClick={() => navigate('/detail', {state: {project}})}
+                                className='profile-myProject-back-button'><img src={BackArrowIcon}
+                                                                               alt="backIcon"/></buuton>
                     </div>
                 </div>
             ))}

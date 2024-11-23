@@ -3,7 +3,7 @@ import {ReactComponent as BackArrowIcon} from '../../../assets/myPage/BackArrowI
 import FileUploadIcon from '../../../assets/profile/FileUploadIcon.png'
 import PostProposal from "../../../apis/profile/PostProposal";
 
-const ProposalWrite = ({onBack}) => {
+const ProposalWrite = ({onBack, id}) => {
     const fileInputRef = useRef(null);
     const [formData, setFormData] = useState({
         title: '',
@@ -37,7 +37,7 @@ const ProposalWrite = ({onBack}) => {
             return;
         }
 
-        const result = await PostProposal(14, formData);
+        const result = await PostProposal(id, formData);
         if (result.data.isSuccess) {
             alert('제안서 전송이 완료되었습니다.');
             console.log(result);
