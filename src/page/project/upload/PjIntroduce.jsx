@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 
-const PjIntroduce = ({ title }) => {
-  const [inputValue, setInputValue] = useState(""); // 입력 값 상태 관리
+const PjIntroduce = ({ title, setInputValue }) => {
+  const [localInputValue, setLocalInputValue] = useState(""); // 로컬 상태 관리
 
   const handleChange = (e) => {
-    if (e.target.value.length <= 300) {
-      setInputValue(e.target.value); // 글자수 제한
+    const newValue = e.target.value;
+    if (newValue.length <= 300) {
+      setLocalInputValue(newValue); // 로컬 상태 업데이트
+      setInputValue(newValue); // 상위 컴포넌트로 값 전달
     }
   };
 
@@ -15,10 +17,10 @@ const PjIntroduce = ({ title }) => {
         <textarea
           className="pj-intro-main-input"
           placeholder="내용을 입력하세요"
-          value={inputValue}
+          value={localInputValue}
           onChange={handleChange}
         ></textarea>
-        <div className="pj-intro-char-count">{inputValue.length}/300</div>
+        <div className="pj-intro-char-count">{localInputValue.length}/300</div>
       </form>
     </div>
   );

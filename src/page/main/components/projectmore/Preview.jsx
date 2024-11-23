@@ -40,7 +40,13 @@ const Preview = ({
           <div className="preview-content-icon">{category}</div>
         </div>
         {/* 진행상황 연동 필요 */}
-        <div>그래프 연동</div>
+
+        <div className="profile-progress">
+          <div
+            className="profile-progress-gauge"
+            style={{ width: `${progressRate}%` }}
+          ></div>
+        </div>
         <div className="preview-content-load">
           <div className="preview-progressRate">{progressRate}</div>
           <div className="preview-achievedAmount">{achievedAmount}원 달성</div>

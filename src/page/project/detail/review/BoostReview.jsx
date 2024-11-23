@@ -3,6 +3,7 @@ import Comment from "./Comment";
 import ReviewProfile from "./ReviewProfile";
 import GetReview from "../../../../apis/project/GetReview";
 import GetMyReview from "../../../../apis/project/GetMyReview";
+import { ReactComponent as Logo } from "../../../../assets/component/project/logo.svg";
 
 const BoostReview = ({ project }) => {
   const [reviews, setReviews] = useState([]); // 후기를 저장할 상태
@@ -65,7 +66,10 @@ const BoostReview = ({ project }) => {
         {reviews.length > 0 ? (
           reviews.map((review) => <Comment key={review.id} review={review} />)
         ) : (
-          <p>후기가 없습니다.</p>
+          <div className="pj-deadline-non-content">
+            <Logo />
+            등록된 마감 후기가 없습니다.
+          </div>
         )}
       </div>
     </div>
