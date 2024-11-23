@@ -5,10 +5,12 @@ import { ReactComponent as Fundboost } from "../assets/applogo/fundboost.svg";
 import { ReactComponent as Back } from "../assets/component/back.svg";
 import PostCompanyLogout from "../apis/login/company/PostCompanyLogout";
 import DeleteKakaoLogout from "../apis/login/DeleteKakaoLogout";
+import UpHeader from "../page/project/upload/UpHeader";
 
 const Header = () => {
   const location = useLocation();
   const navigate = useNavigate();
+  const path = location.pathname;
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const menu = [
@@ -23,6 +25,9 @@ const Header = () => {
     { name: "프로젝트 업로드", path: "/upload" },
     { name: "이벤트", path: "/event" },
   ];
+
+  const showUpHeader = ["/write", "/fund", "/plan", "/createuser"];
+  const showHeader = showUpHeader.includes(path);
 
   useEffect(() => {
     const token = sessionStorage.getItem("accessToken");
@@ -62,50 +67,51 @@ const Header = () => {
   };
 
   return (
-      <div className="header-container">
-        <div className="header-title-container">
-          <div className="header-main" onClick={() => navigate("/")}>
-            <Fundboost/>
-          </div>
+    <div className="header-container">
+      <div className="header-title-container">
+        <div className="header-main" onClick={() => navigate("/")}>
+          <Fundboost />
+        </div>
 
-          <div className="header-title-list-container">
-            {(isLoggedIn ? menuok : menu).map((item) => (
-                <div
-                    key={item.path}
-                    className={`header-title-menu ${
-                        isActive(item.path) ? "active" : ""
-                    }`}
-                    onClick={() => goMenuHandler(item.path)}
-                >
-                  {item.name}
-                </div>
-            ))}
-          </div>
+        <div className="header-title-list-container">
+          {(isLoggedIn ? menuok : menu).map((item) => (
+            <div
+              key={item.path}
+              className={`header-title-menu ${
+                isActive(item.path) ? "active" : ""
+              }`}
+              onClick={() => goMenuHandler(item.path)}
+            >
+              {item.name}
+            </div>
+          ))}
+        </div>
 
-          <div className="header-login-container">
-            {isLoggedIn ? (
-                <>
-                  <button
-                      className="header-mypage"
-                      onClick={() => {
-                        navigate("/myPage");
-                      }}
-                  >
-                    마이페이지
-                  </button>
-                  <button className="header-logout" onClick={clickLogout}>
-                    로그아웃
-                  </button>
-                </>
-            ) : (
-                <button className="header-login" onClick={() => navigate("/login")}>
-                  로그인
-                  <Back/>
-                </button>
-            )}
-          </div>
+        <div className="header-login-container">
+          {isLoggedIn ? (
+            <>
+              <button
+                className="header-mypage"
+                onClick={() => {
+                  navigate("/myPage");
+                }}
+              >
+                마이페이지
+              </button>
+              <button className="header-logout" onClick={clickLogout}>
+                로그아웃
+              </button>
+            </>
+          ) : (
+            <button className="header-login" onClick={() => navigate("/login")}>
+              로그인
+              <Back />
+            </button>
+          )}
         </div>
       </div>
+      {showHeader && <UpHeader />}
+    </div>
   );
 };
 
