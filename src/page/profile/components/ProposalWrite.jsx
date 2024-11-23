@@ -32,13 +32,17 @@ const ProposalWrite = ({onBack}) => {
     const ClickSubmit = async () => {
         const {title, content, file} = formData;
 
-        if (!title || !content) {
+        if (!title || !content || !file) {
             alert('모든 필드를 작성해주세요!');
             return;
         }
 
-        const result = await PostProposal(1,formData);
-        console.log(result);
+        const result = await PostProposal(14, formData);
+        if (result.data.isSuccess) {
+            alert('제안서 전송이 완료되었습니다.');
+            console.log(result);
+            onBack();
+        }
     };
 
     return (
@@ -58,7 +62,8 @@ const ProposalWrite = ({onBack}) => {
                     >
                         <img src={FileUploadIcon} alt="파일 업로드"/>
                     </div>
-                    <span className='proposal-write-file-upload-info'>파일 업로드</span>
+                    <span
+                        className='proposal-write-file-upload-info'>{formData?.file ? formData.file.name : '파일 업로드'}</span>
                 </div>
                 <input
                     type="file"

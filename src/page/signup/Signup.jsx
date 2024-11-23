@@ -19,11 +19,6 @@ const Signup = () => {
                     <span>기업 후원자</span>
                 </button>
             </section>
-            <footer className='signup-footer'>
-                <a href="">About Us</a>
-                <a href="">Contact</a>
-                <a href="">Terms of Use</a>
-            </footer>
         </div>
     );
 };

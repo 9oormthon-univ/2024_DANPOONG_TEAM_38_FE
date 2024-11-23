@@ -51,16 +51,16 @@ const MyProject = () => {
     }
 
     const calculateStep = (progressRate) => {
-        if (progressRate <= 25) return 0;
-        if (progressRate <= 50) return 1;
-        if (progressRate <= 75) return 2;
-        return 3; // 76~100은 3
+        if (progressRate === "DRAFT") return 0;
+        if (progressRate === "REVIEW") return 1;
+        if (progressRate === "FUNDING") return 2;
+        return 3;
     };
 
     return (
         <div className='myProject-container'>
             {projects.map((project) => {
-                const progressRate = project.progressRate;
+                const progressRate = project.progressStatus;
                 const currentStep = calculateStep(progressRate);
 
                 return (
