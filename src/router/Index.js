@@ -27,7 +27,16 @@ const CategoryList = lazy(() =>
 const Upload = lazy(() => import("../page/project/upload"));
 const Detail = lazy(() => import("../page/project/detail"));
 const Boost = lazy(() => import("../page/project/boost"));
+
+const Write = lazy(() => import("../page/project/upload/PjWrite"));
+const Fund = lazy(() => import("../page/project/upload/Pjfund"));
+const Plan = lazy(() => import("../page/project/upload/PjPlan"));
+const PjUser = lazy(() => import("../page/project/upload/PjUser"));
+const ShowProject = lazy(() => import("../page/project/upload/PjUpload"));
+const No = lazy(() => import("../page/project/upload/NoUp"));
+
 const Ranking = lazy(() => import("../page/ranking/Ranking"));
+
 
 const router = createBrowserRouter([
   {
@@ -38,6 +47,14 @@ const router = createBrowserRouter([
         element: (
           <Suspense fallback={<Loading />}>
             <Login />
+          </Suspense>
+        ),
+      },
+      {
+        path: "nologin",
+        element: (
+          <Suspense fallback={<Loading />}>
+            <No />
           </Suspense>
         ),
       },
@@ -126,6 +143,46 @@ const router = createBrowserRouter([
         element: (
           <Suspense fallback={<Loading />}>
             <Search />
+          </Suspense>
+        ),
+      },
+      {
+        path: "write",
+        element: (
+          <Suspense fallback={<Loading />}>
+            <Write />
+          </Suspense>
+        ),
+      },
+      {
+        path: "fund",
+        element: (
+          <Suspense fallback={<Loading />}>
+            <Fund />
+          </Suspense>
+        ),
+      },
+      {
+        path: "createuser",
+        element: (
+          <Suspense fallback={<Loading />}>
+            <PjUser />
+          </Suspense>
+        ),
+      },
+      {
+        path: "showproject",
+        element: (
+          <Suspense fallback={<Loading />}>
+            <ShowProject />
+          </Suspense>
+        ),
+      },
+      {
+        path: "plan",
+        element: (
+          <Suspense fallback={<Loading />}>
+            <Plan />
           </Suspense>
         ),
       },

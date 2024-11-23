@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom"; // React Router 네비게이션 훅
 import { ReactComponent as AtCheck } from "../../../assets/component/upload/ActiceCheck.svg";
 import { ReactComponent as Check } from "../../../assets/component/upload/check.svg";
 
@@ -13,13 +14,19 @@ const list = [
 ];
 
 const PjPreparation = () => {
-  // 준비 상태 관리
   const [completed, setCompleted] = useState([]);
+  const navigate = useNavigate();
 
   const toggleCheck = (id) => {
     setCompleted((prev) =>
       prev.includes(id) ? prev.filter((item) => item !== id) : [...prev, id]
     );
+  };
+
+  const goHandler = () => {
+    if (completed.length > 0) {
+      navigate("/write");
+    }
   };
 
   return (
@@ -37,11 +44,13 @@ const PjPreparation = () => {
           </div>
         </div>
       ))}
-      {/* 프로젝트 관리 경로 추가 필요 */}
       <div className="pj-pre-btn-container">
         <div className="pj-pre-back-btn">뒤로가기</div>
         <div
-          className={`pj-pre-next-btn${completed.length > 0 ? "isActive" : ""}`}
+          className={`pj-pre-next-btn${
+            completed.length > 0 ? " isActive" : ""
+          }`}
+          onClick={goHandler}
         >
           시작하기
         </div>

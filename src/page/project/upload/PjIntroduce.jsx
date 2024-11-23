@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const PjIntroduce = () => {
+const PjIntroduce = ({ title }) => {
   const [inputValue, setInputValue] = useState(""); // 입력 값 상태 관리
 
   const handleChange = (e) => {
@@ -11,7 +11,6 @@ const PjIntroduce = () => {
 
   return (
     <div className="pj-intro-container">
-      <div className="pj-intro-title">프로젝트를 간단히 소개해주세요.</div>
       <form className="pj-intro-main-write-title">
         <textarea
           className="pj-intro-main-input"

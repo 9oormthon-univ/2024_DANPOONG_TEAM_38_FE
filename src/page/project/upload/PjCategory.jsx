@@ -1,19 +1,20 @@
 import React, { useState } from "react";
 
 const list = [
-  { id: 1, name: "🎶 음악" },
-  { id: 2, name: "🎨 미술" },
-  { id: 3, name: "💻 웹/앱 서비스" },
-  { id: 4, name: "💄뷰티" },
-  { id: 5, name: "🪑소품" },
-  { id: 6, name: "🎮게임" },
+  { id: 1, name: "🎶 음악", form: "MUSIC" },
+  { id: 2, name: "🎨 미술", form: "ART" },
+  { id: 3, name: "💻 웹/앱 서비스", form: "WEB_APP" },
+  { id: 4, name: "💄뷰티", form: "BEAUTY" },
+  { id: 5, name: "🪑소품", form: "ACCESSORY" },
+  { id: 6, name: "🎮게임", form: "GAME" },
 ];
 
-const PjCategory = () => {
-  const [activeId, setActiveId] = useState(null); // 초기값을 null로 설정
+const PjCategory = ({ setCategory }) => {
+  const [activeId, setActiveId] = useState(null);
 
-  const clickHandler = (id) => {
+  const clickHandler = (id, form) => {
     setActiveId(id); // 클릭한 버튼의 id를 상태로 저장
+    setCategory(form); // 선택된 form 값을 Upload 컴포넌트로 전달
   };
 
   return (
@@ -27,8 +28,8 @@ const PjCategory = () => {
             key={item.id}
             className={`pj-category-select-btn${
               activeId === item.id ? " isActive" : ""
-            }`} // activeId와 item.id를 비교
-            onClick={() => clickHandler(item.id)} // 클릭 시 해당 id를 설정
+            }`}
+            onClick={() => clickHandler(item.id, item.form)} // form 값을 전달
           >
             {item.name}
           </div>
@@ -36,7 +37,8 @@ const PjCategory = () => {
         <input
           className="pj-category-write-btn"
           placeholder="기타(직접 입력)"
-        ></input>
+          onBlur={(e) => setCategory(e.target.value)} // 기타 입력값도 category로 설정
+        />
       </div>
     </div>
   );
