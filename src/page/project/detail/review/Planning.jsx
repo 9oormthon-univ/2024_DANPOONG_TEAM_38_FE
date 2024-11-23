@@ -43,7 +43,6 @@ const Planning = ({ project }) => {
 
   return (
     <div className="pj-plan-container">
-      <h1>연동 후 UI 수정 필요</h1>
       <div>
         <strong>1. 프로젝트 소개:</strong> {projectDetails.introduction}
       </div>

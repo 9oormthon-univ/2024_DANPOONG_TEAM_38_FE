@@ -42,11 +42,6 @@ const createProject = async (requestData) => {
   formData.append("summary", summary);
 
   // 이미지 배열을 폼 데이터에 추가
-  if (images && Array.isArray(images)) {
-    images.forEach((image, index) => {
-      formData.append("images", image); // 배열을 images로 append
-    });
-  }
 
   try {
     const response = await axios.post(

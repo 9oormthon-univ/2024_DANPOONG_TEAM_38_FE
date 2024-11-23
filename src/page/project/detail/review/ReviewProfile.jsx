@@ -5,13 +5,12 @@ import { ReactComponent as Write } from "../../../../assets/component/project/wr
 const ReviewProfile = ({ myreviews }) => {
   const navigate = useNavigate();
   return (
-    <div>
+    <div className="pj-booost">
       {/* 댓글 작성하기 ui 경로 연결 필요 */}
       <div
         className="pj-boost-reviews-comment-write-btn"
         onClick={() => navigate("")}
       >
-        <Write />
         작성하기
       </div>
       <div className="pj-boost-reviews-comment-box">

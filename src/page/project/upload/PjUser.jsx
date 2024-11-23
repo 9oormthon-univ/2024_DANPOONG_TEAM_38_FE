@@ -2,7 +2,9 @@ import React, { useState } from "react";
 import { ReactComponent as Line } from "../../../assets/component/upload/useline.svg";
 import { ReactComponent as Up12 } from "../../../assets/component/upload/up12.svg";
 import { ReactComponent as Up11 } from "../../../assets/component/upload/up11.svg";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, useOutletContext } from "react-router-dom";
+import createProject from "../../../apis/project/PostCreateProject";
+
 const menu = [
   { id: 1, name: "카카오뱅크" },
   { id: 2, name: "우리은행" },
@@ -16,10 +18,65 @@ const menu = [
 
 const PjUser = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const [selectedLocal, setSelectedLocal] = useState(null);
+  const [account, setAccount] = useState("");
+
+  const {
+    targetAmount,
+    startDate,
+    endDate,
+    images,
+    mainTitle,
+    subTitle,
+    summary,
+    region,
+    category,
+    introduction,
+    budgetDescription,
+    scheduleDescription,
+    teamDescription,
+  } = location.state || {}; // state에서 데이터 받기
+
   const handleLocalClick = (check) => {
     setSelectedLocal(check === selectedLocal ? null : check);
   };
+
+  const { isLoggedIn, accessToken } = useOutletContext();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    // Create requestData with all required fields
+    const requestData = {
+      mainTitle,
+      subTitle,
+      category, // You can set category based on the selected bank or region
+      region,
+      account,
+      budgetDescription,
+      scheduleDescription,
+      teamDescription,
+      targetAmount,
+      introduction,
+      images,
+      startDate,
+      endDate,
+      summary,
+      accessToken,
+    };
+
+    try {
+      const result = await createProject(requestData);
+      console.log("프로젝트 생성 성공:", result);
+      // Handle success (e.g., redirect, show success message, etc.)
+      navigate("/showproject"); // Navigate to the show project page after successful submission
+    } catch (error) {
+      console.error("프로젝트 생성 실패:", error);
+      // Handle error (e.g., show error message)
+    }
+  };
+
   return (
     <div className="pj-write-container">
       <div className="pj-write-left">
@@ -49,6 +106,7 @@ const PjUser = () => {
           <input
             className="pj-fund-subtitle"
             placeholder="달성 시 예상 수령 금액을 입력해주세요."
+            onChange={(e) => setAccount(e.target.value)}
           />
         </div>
         <div className="pj-any-box">소개글 작성</div>
@@ -84,11 +142,11 @@ const PjUser = () => {
           ))}
         </div>
 
+        {/* Changed onClick to call handleSubmit */}
         <div
           className="pj-local-next-btn"
-          onClick={() => navigate("/showproject")}
+          onClick={handleSubmit} // Trigger handleSubmit when button is clicked
         >
-          {" "}
           저장하기
         </div>
       </div>

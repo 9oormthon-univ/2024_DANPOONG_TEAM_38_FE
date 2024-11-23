@@ -46,7 +46,7 @@ const CategoryList = () => {
         setKeyword={setKeyword}
         setSearchResults={setSearchResults} // 검색 결과 업데이트
       />
-      <Category />
+
       <Recent />
       <div className="pj-list-main">
         <div className="pj-preview-grid">

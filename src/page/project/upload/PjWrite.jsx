@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import { useNavigate } from "react-router-dom";
 import { ReactComponent as Line } from "../../../assets/component/upload/greenline.svg";
 import { ReactComponent as Pjcategory } from "../../../assets/component/upload/pjcategory.svg";
 import { ReactComponent as Pjimg } from "../../../assets/component/upload/pjimg.svg";
@@ -10,10 +10,8 @@ import { ReactComponent as Upimg } from "../../../assets/component/upload/upimg.
 
 import PjCategory from "./PjCategory";
 import PjIntroduce from "./PjIntroduce";
-import UpHeader from "./UpHeader";
-import { useNavigate } from "react-router-dom";
 
-// SEOUL, INCHEON, DAEGU, BUSAN, GWANGJU, DAEJEON, ULSAN, JEJU, CHUNGCHEONG, GYEONGGI, GANGWON, JEOLLA, GYEONGSANG
+// 지역 목록
 const menu = [
   { id: 1, name: "서울", check: "SEOUL" },
   { id: 2, name: "경기도", check: "GYEONGGI" },
@@ -31,16 +29,38 @@ const menu = [
 
 const PjWrite = () => {
   const [images, setImages] = useState([]);
-  const [selectedLocal, setSelectedLocal] = useState(null); // State to track selected local
+  const [mainTitle, setMainTitle] = useState("");
+  const [subTitle, setSubTitle] = useState("");
+  const [summary, setInputValue] = useState("");
+  const [region, setRegion] = useState("");
+  const [selectedLocal, setSelectedLocal] = useState(null); // 지역 선택 상태 관리
   const navigate = useNavigate();
+
   const handleImageChange = (e) => {
     setImages(e.target.files);
   };
 
+  const [category, setCategory] = useState("");
+
   const handleLocalClick = (check) => {
     setSelectedLocal(check === selectedLocal ? null : check);
+    setRegion(check);
   };
 
+  const handleSaveClick = () => {
+    const formData = {
+      images,
+      mainTitle,
+      subTitle,
+      summary,
+      region,
+      category,
+    };
+
+    // /fund 페이지로 데이터 전달
+    navigate("/fund", { state: formData });
+  };
+  console.log("카테 확인", category);
   return (
     <div className="pj-write-container">
       <div className="pj-write-left">
@@ -67,19 +87,21 @@ const PjWrite = () => {
         </div>
       </div>
       <div className="pj-write-right">
-        <PjCategory />
+        <PjCategory setCategory={setCategory} />
         <div className="pj-write-title-input">
           <input
             className="pj-write-maintitle"
             placeholder="프로젝트 대제목을 입력해주세요."
+            onChange={(e) => setMainTitle(e.target.value)}
           />
           <input
             className="pj-write-subtitle"
             placeholder="프로젝트 소제목을 입력해주세요."
+            onChange={(e) => setSubTitle(e.target.value)}
           />
         </div>
         <div className="pj-write-summary-input">
-          <PjIntroduce />
+          <PjIntroduce setInputValue={setInputValue} />
         </div>
         <form>
           <label htmlFor="file-upload" className="custom-file-upload">
@@ -114,8 +136,7 @@ const PjWrite = () => {
             ))}
           </div>
         </div>
-        <div className="pj-local-next-btn" onClick={() => navigate("/fund")}>
-          {" "}
+        <div className="pj-local-next-btn" onClick={handleSaveClick}>
           저장하기
         </div>
       </div>
