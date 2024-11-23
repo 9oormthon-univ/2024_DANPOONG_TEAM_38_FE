@@ -1,7 +1,9 @@
 import React, {useEffect, useState} from 'react';
 import GetProposalDetail from "../../../apis/myPage/GetProposalDetail";
 import {ReactComponent as BackArrowIcon} from '../../../assets/myPage/BackArrowIcon.svg';
-import DummyImg2 from "../../../assets/myPage/DummyImg2.png";
+import DownloadIcon from '../../../assets/myPage/DownloadIcon.png'
+import FileIcon from '../../../assets/myPage/FileIcon.png'
+import axios from "axios";
 
 const ProposalDetail = ({detailProposal, onBack}) => {
     const [proposalDetail, setProposalDetail] = useState(null);
@@ -16,27 +18,31 @@ const ProposalDetail = ({detailProposal, onBack}) => {
         }
     };
 
-    // content
-    // :
-    // "This is a sample content for user 4."
-    // createdAt
-    // :
-    // "2024.11.21 02:18"
-    // id
-    // :
-    // 1
-    // image
-    // :
-    // "https://fundboost-bucket.s3.ap-northeast-2.amazonaws.com/logo.png"
-    // title
-    // :
-    // "Sample Proposal for User 4"
-    // userName
-    // :
-    // null
     useEffect(() => {
         fetchProposals(detailProposal);
     }, []);
+
+    const handleDownload = (file) => {
+        axios.get(file, {responseType: 'blob'})
+            .then(response => {
+                const fileUrl = window.URL.createObjectURL(new Blob([response.data]));
+
+                const fileName = file.split('/').pop();
+
+                const fileExtension = fileName.split('.').pop();
+
+                const downloadFileName = '제안서'+ '.' +fileExtension;
+
+                const link = document.createElement('a');
+                link.href = fileUrl;
+                link.setAttribute('download', downloadFileName);
+                document.body.appendChild(link);
+                link.click();
+                link.remove();
+            })
+            .catch(error => console.error("Download error:", error));
+    };
+
 
     return (
         <div className='proposal-detail-container'>
@@ -50,7 +56,7 @@ const ProposalDetail = ({detailProposal, onBack}) => {
                             alt="프로필"
                         />
                     </div>
-                    <span className='proposal-detail-user-name'>{proposalDetail?.proposal.userName}성지훈</span>
+                    <span className='proposal-detail-user-name'>{proposalDetail?.proposal.userName}</span>
                 </div>
                 <div className='flex-1'>
                     <div className='flex justify-between'>
@@ -62,9 +68,23 @@ const ProposalDetail = ({detailProposal, onBack}) => {
                 </div>
             </div>
 
-            <div className='proposal-detail-file-box'>
-                {proposalDetail?.files}
-            </div>
+            {proposalDetail?.files[0] &&
+                <div className='proposal-detail-file-box'>
+                    {proposalDetail?.files.map((file, index) => (
+                        <div key={index} className='flex w-full gap-x-5'>
+                            <img src={FileIcon} alt=""/>
+                            <button
+                                key={index}
+                                onClick={() => handleDownload(file)}
+                                className='flex justify-between w-full items-center font-medium text-2xl'
+                            >
+                                {`제안서${index + 1} 다운로드`}
+                                <img src={DownloadIcon} alt=""/>
+                            </button>
+                        </div>
+                    ))}
+                </div>}
+
             <div className='flex gap-x-3 justify-end mt-3'>
                 <button className='proposal-detail-button'>수락하기</button>
                 <button className='proposal-detail-button'>거절하기</button>

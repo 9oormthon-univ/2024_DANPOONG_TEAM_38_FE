@@ -17,8 +17,8 @@ const MyPage = lazy(() => import("../page/myPage/MyPage"));
 const MyPageEdit = lazy(() => import("../page/myPage/MyPageEdit"));
 const Profile = lazy(() => import("../page/profile/Profile"));
 const Main = lazy(() => import("../page/main"));
-const Introduction = lazy(() => import("../page/introduction"));
-const Event = lazy(() => import("../page/showevent"));
+const Introduction = lazy(() => import("../page/introduction/Introduction"));
+const Event = lazy(() => import("../page/showevent/Event"));
 const List = lazy(() => import("../page/project/list"));
 const Search = lazy(() => import("../page/project/list/SearchList"));
 const CategoryList = lazy(() =>
@@ -27,12 +27,16 @@ const CategoryList = lazy(() =>
 const Upload = lazy(() => import("../page/project/upload"));
 const Detail = lazy(() => import("../page/project/detail"));
 const Boost = lazy(() => import("../page/project/boost"));
+
 const Write = lazy(() => import("../page/project/upload/PjWrite"));
 const Fund = lazy(() => import("../page/project/upload/Pjfund"));
 const Plan = lazy(() => import("../page/project/upload/PjPlan"));
 const PjUser = lazy(() => import("../page/project/upload/PjUser"));
 const ShowProject = lazy(() => import("../page/project/upload/PjUpload"));
 const No = lazy(() => import("../page/project/upload/NoUp"));
+
+const Ranking = lazy(() => import("../page/ranking/Ranking"));
+
 
 const router = createBrowserRouter([
   {
@@ -221,6 +225,14 @@ const router = createBrowserRouter([
           <Suspense fallback={<Loading />}>
             <Event />
           </Suspense>
+        ),
+      },
+      {
+        path: "ranking",
+        element: (
+            <Suspense fallback={<Loading />}>
+              <Ranking />
+            </Suspense>
         ),
       },
     ],

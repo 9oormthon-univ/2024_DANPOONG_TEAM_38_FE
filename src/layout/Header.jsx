@@ -32,7 +32,7 @@ const Header = () => {
   useEffect(() => {
     const token = sessionStorage.getItem("accessToken");
     setIsLoggedIn(!!token);
-    console.log("토큰 확인: ", token);
+
   }, [location.pathname]);
 
   const isActive = (menuPath) => location.pathname === menuPath;

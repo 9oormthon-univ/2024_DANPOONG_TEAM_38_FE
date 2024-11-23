@@ -36,13 +36,13 @@
     padding: 0.5rem 1.875rem;
   }
 
-  hr {
+  .profile-hr {
     height: 80px;
     background-color: #7F7F7F;
     width: 1px;
   }
 
-  .profile-introduce{
+  .profile-introduce {
     text-align: center;
     border: 1px solid #D9D9D9;
     border-radius: 15px;
@@ -61,7 +61,81 @@
     color: #00C78C;
   }
 
-  .font-Bruno{
+  .font-Bruno {
     font-family: "Bruno Ace", sans-serif;
+  }
+
+  .profile-fab {
+    z-index: 1000;
+    cursor: pointer;
+    position: fixed;
+    bottom: 42px;
+    right: calc((100% - 1440px) / 2 + 6.875rem);
+    display: flex;
+    column-gap: 0.5rem;
+    padding: 1rem 1.5rem;
+    border-radius: 46px;
+    background-color: #00C78C;
+    color: white;
+    font-weight: 700;
+    font-size: 1.25rem;
+    box-shadow: 0 3.23px 3.23px 0 #00000033;
+  }
+
+  .proposal-write-container {
+    display: flex;
+    flex-direction: column;
+
+    .proposal-write-back-button {
+      display: flex;
+      column-gap: 1rem;
+      font-size: 1.5rem;
+      font-weight: 500;
+      margin: 3.5rem 0 2rem 0;
+    }
+
+    .proposal-write-h3 {
+      font-weight: 400;
+      font-size: 2.125rem;
+    }
+
+    .proposal-write-info {
+      font-weight: 400;
+      font-size: 1.25rem;
+      color: #7F7F7F;
+    }
+
+    .proposal-write-input-text {
+      padding: 1rem 1.25rem;
+      font-size: 1.5rem;
+      border: 1px solid #D9D9D9;
+      border-radius: 10px;
+      width: 100%;
+      margin-bottom: 1.75rem;
+      resize: none;
+      outline: none;
+    }
+
+    .proposal-write-file-upload {
+      margin-bottom: 2rem;
+      cursor: pointer;
+      display: inline-block;
+    }
+    .proposal-write-file-upload-info{
+      font-weight: 500;
+      font-size: 1.5rem;
+    }
+
+    .proposal-write-button {
+      display: flex;
+      margin-left: auto;
+      background-color: #00C78C;
+      font-weight: 600;
+      font-size: 1.625rem;
+      color: white;
+      padding: 0.5rem 1.5rem;
+      border-radius: 5px;
+      margin-bottom: 2rem;
+    }
   }
 }
