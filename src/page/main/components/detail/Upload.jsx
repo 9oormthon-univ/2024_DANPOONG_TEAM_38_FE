@@ -10,7 +10,7 @@ const Upload = () => {
     <div className="upload-container">
       <div className="upload-title">Upload process</div>
       <div className="upload-content">
-        크라우드유스에 프로젝트 업로드 시 거치게되는 과정입니다.
+        펀드부스트에 프로젝트 업로드 시 거치게되는 과정입니다.
       </div>
       <div className="upload-guide">
         <G1 /> <Next />
