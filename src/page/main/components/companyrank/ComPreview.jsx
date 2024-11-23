@@ -93,6 +93,8 @@ const ComPreview = () => {
                 style={{
                   backgroundImage: `url(${company.image})`,
                   backgroundColor: isClicked ? "#000000" : "transparent",
+                  backgroundPosition: 'center',
+                  backgroundSize: 'contain',
                 }}
                 onClick={() => setClickedIndex(isClicked ? null : index)} // 클릭 상태 토글
               >
