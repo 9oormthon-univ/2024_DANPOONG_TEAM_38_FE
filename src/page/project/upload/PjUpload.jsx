@@ -60,11 +60,13 @@ const PjUpload = () => {
         </div>
       </div>
       {/* 마감 후기 작성 버튼 */}
-      <div
-        className="pj-show-write"
-        onClick={() => setIsWriteMode((prev) => !prev)} // 상태 토글
-      >
-        마감 후기 작성
+      <div className="pj-show-write-contanier">
+        <div
+          className="pj-show-write"
+          onClick={() => setIsWriteMode((prev) => !prev)} // 상태 토글
+        >
+          {isWriteMode ? "저장하기" : "마감 후기 작성"}
+        </div>
       </div>
       <div className="pj-show-line" />
       {/* 조건에 따른 렌더링 */}
