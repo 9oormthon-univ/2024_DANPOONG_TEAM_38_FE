@@ -60,4 +60,14 @@
     font-family: "Bruno Ace", sans-serif;
   }
 
+  .myPage-no{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 25px;
+  height: 670px;
+  gap: 20px;
+}
+
 }
