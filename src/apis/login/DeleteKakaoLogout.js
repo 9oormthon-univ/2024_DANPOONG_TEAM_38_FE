@@ -1,5 +1,5 @@
 import axios from 'axios';
-// 지금 안됨
+
 const DeleteKakaoLogout = async () => {
     const accessToken = sessionStorage.getItem('accessToken');
 

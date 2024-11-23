@@ -106,7 +106,7 @@ const ComPreview = () => {
                       {company.category}
                     </div>
                     <div className="rank-preview-info-name">
-                      {company.name}ㅇㅇ
+                      {company.name}
                     </div>
                     <div className="rank-preview-info-amount">
                       {company.contributionAmount.toLocaleString()}원
@@ -116,7 +116,7 @@ const ComPreview = () => {
                   <div className="rank-preview-info">
                     <Title />
                     <div className="rank-preview-img-name">
-                      {company.name} dd
+                      {company.name}
                     </div>
                   </div>
                 )}
