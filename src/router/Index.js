@@ -32,6 +32,7 @@ const Fund = lazy(() => import("../page/project/upload/Pjfund"));
 const Plan = lazy(() => import("../page/project/upload/PjPlan"));
 const PjUser = lazy(() => import("../page/project/upload/PjUser"));
 const ShowProject = lazy(() => import("../page/project/upload/PjUpload"));
+const No = lazy(() => import("../page/project/upload/NoUp"));
 
 const router = createBrowserRouter([
   {
@@ -42,6 +43,14 @@ const router = createBrowserRouter([
         element: (
           <Suspense fallback={<Loading />}>
             <Login />
+          </Suspense>
+        ),
+      },
+      {
+        path: "nologin",
+        element: (
+          <Suspense fallback={<Loading />}>
+            <No />
           </Suspense>
         ),
       },

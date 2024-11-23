@@ -129,3 +129,12 @@
     }
   }
 }
+
+.no-up-container {
+  width: 1440px;
+  height: 1000px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
