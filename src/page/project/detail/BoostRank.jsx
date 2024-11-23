@@ -100,29 +100,38 @@ const BoostRank = ({
     <div className="pj-detail-boost-ranking-container">
       {showContent &&
         (ranks.length > 0 ? (
-          ranks.map((rank, index) => (
-            <div className="pj-detail-boost-rank-container" key={index}>
-              <div className="pj-detail-boost-rank-num">{index + 1}위</div>
-              <div className="pj-detail-boost-rank-img">
-                <img
-                  src={rank.image}
-                  alt={`${rank.companyName} 로고`}
-                  style={{ width: "68px", height: "68px", borderRadius: "50%" }}
-                />
-              </div>
-              <div className="pj-detail-boost-rank-content">
-                <div className="pj-detail-boost-rank-name">
-                  {rank.companyName}
+          ranks.slice(0, 3).map(
+            (
+              rank,
+              index // 여기에서 slice를 사용해 3개만 출력
+            ) => (
+              <div className="pj-detail-boost-rank-container" key={index}>
+                <div className="pj-detail-boost-rank-num">{index + 1}위</div>
+                <div className="pj-detail-boost-rank-img">
+                  <img
+                    src={rank.image}
+                    alt={`${rank.companyName} 로고`}
+                    style={{
+                      width: "68px",
+                      height: "68px",
+                      borderRadius: "50%",
+                    }}
+                  />
                 </div>
-                <div className="pj-detail-boost-rank-won-box">
-                  <div className="pj-detail-boost-rank-won">
-                    {rank.contributionAmount.toLocaleString()}원
+                <div className="pj-detail-boost-rank-content">
+                  <div className="pj-detail-boost-rank-name">
+                    {rank.companyName}
                   </div>
-                  &nbsp;후원
+                  <div className="pj-detail-boost-rank-won-box">
+                    <div className="pj-detail-boost-rank-won">
+                      {rank.contributionAmount.toLocaleString()}원
+                    </div>
+                    &nbsp;후원
+                  </div>
                 </div>
               </div>
-            </div>
-          ))
+            )
+          )
         ) : (
           <div className="pj-detail-boost-ranking-container">
             랭킹 데이터가 없습니다.

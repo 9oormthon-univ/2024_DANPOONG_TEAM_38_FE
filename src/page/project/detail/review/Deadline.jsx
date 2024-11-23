@@ -52,7 +52,14 @@ const Deadline = ({ project }) => {
           </div>
           <div className="pj-deadline-line"></div>
           {/* 마감 후기 작성 내용 API */}
-          <div className="pj-deadline-content">{firstReview.description}</div>
+          <div className="pj-deadline-content">
+            {firstReview.description.split("\\n").map((line, index) => (
+              <React.Fragment key={index}>
+                {line}
+                <br />
+              </React.Fragment>
+            ))}
+          </div>
         </>
       ) : (
         <div className="pj-deadline-non-content">
