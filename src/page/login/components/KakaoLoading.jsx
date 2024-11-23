@@ -1,6 +1,8 @@
 import React, {useEffect} from 'react';
 import {useNavigate} from "react-router-dom";
 import GetCode from "../../../apis/login/GetCode";
+import  Player  from 'lottie-react';
+import LoadingLottie from '../../../assets/LoadingLottie.json';
 
 const KakaoLoading = () => {
     const navigate = useNavigate();
@@ -28,8 +30,13 @@ const KakaoLoading = () => {
     }, []);
 
     return (
-        <div className='text-center'>
-            로딩중
+        <div className='flex items-center justify-center'>
+            <Player
+                autoplay
+                loop
+                animationData={LoadingLottie}
+                style={{height: '300px', width: '300px'}}
+            />
         </div>
     );
 };
