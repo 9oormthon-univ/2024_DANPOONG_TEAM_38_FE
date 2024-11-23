@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import GetComRanking from "../../apis/project/GetComRanking";
 import AwardIcon from "../../assets/ranking/AwardIcon.png";
-import { ReactComponent as Next } from "../../assets/component/BigNext.svg";
-import { ReactComponent as Back } from "../../assets/component/BigBack.svg";
+import {ReactComponent as Next} from "../../assets/component/BigNext.svg";
+import {ReactComponent as Back} from "../../assets/component/BigBack.svg";
 import {useNavigate} from "react-router-dom";
 
 const menu = [
@@ -42,6 +42,13 @@ const Ranking = () => {
         setActiveMenu(menu[prevIndex].sortType);
     };
 
+    const sortedCompanyRankData = () => {
+        if (activeMenu === "projects") {
+            return companyRankData.sort((a, b) => b.contributionCount - a.contributionCount);
+        }
+        return companyRankData.sort((a, b) => b.contributionAmount - a.contributionAmount);
+    };
+
     return (
         <div className='ranking-container'>
             <section className='flex mt-20'>
@@ -61,7 +68,7 @@ const Ranking = () => {
                 <div className='w-1/2 h-[500px] relative'>
                     <img src={companyRankData[0]?.image} alt="" className='ranking-first-company-image'/>
                     <div className='absolute right-0 bottom-0'>
-                        <button className='mr-14' onClick={handleBack}><Back /></button>
+                        <button className='mr-14' onClick={handleBack}><Back/></button>
                         <button onClick={handleNext}><Next/></button>
                     </div>
                 </div>
@@ -80,16 +87,20 @@ const Ranking = () => {
                 ))}
             </section>
             <section className='ranking-companys'>
-                {companyRankData
-                    .sort((a, b) => b.contributionAmount - a.contributionAmount)
+                {sortedCompanyRankData()
                     .map((company, index) => {
                         return (
                             index === 0 ?
                                 <div className='ranking-first-company-box'
-                                     onClick={()=>navigate(`/profile/${company.id}`)}
+                                     onClick={() => navigate(`/profile/${company.id}`)}
                                      key={company.id}>
                                     <div className='relative'>
-                                        <img src={company.image} alt="" style={{minWidth:'350px',maxWidth:'350px',minHeight:'350px',maxHeight:'350px'}}/>
+                                        <img src={company.image} alt="" style={{
+                                            minWidth: '350px',
+                                            maxWidth: '350px',
+                                            minHeight: '350px',
+                                            maxHeight: '350px'
+                                        }}/>
                                         <div
                                             className='absolute top-0 left-0 font-extrabold text-[45px]'>{(index + 1).toString().padStart(2, '0')}</div>
                                     </div>
@@ -108,9 +119,10 @@ const Ranking = () => {
                                 </div>
                                 :
                                 <div className='ranking-company' key={company.id}
-                                     onClick={()=>navigate(`/profile/${company.id}`)}
+                                     onClick={() => navigate(`/profile/${company.id}`)}
                                 >
-                                    <div className='font-extrabold text-[45px]'>{(index + 1).toString().padStart(2, '0')}</div>
+                                    <div
+                                        className='font-extrabold text-[45px]'>{(index + 1).toString().padStart(2, '0')}</div>
                                     <div className='flex-1'>
                                         <h4 className='ranking-company-name'>{company.name}</h4>
                                         <div className='flex'>
