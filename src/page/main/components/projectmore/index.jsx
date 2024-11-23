@@ -38,7 +38,7 @@ const ProjectMore = ({ setRecentImage }) => {
           onClick={() => navigate("/list")}
         />
         <div className="more-preview-container">
-          {newProjects.length > 0 ? (
+          {newProjects?.length > 0 ? (
             newProjects.map((project) => (
               <Preview
                 key={project.id}
