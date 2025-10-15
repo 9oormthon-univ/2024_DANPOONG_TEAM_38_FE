@@ -16,15 +16,15 @@
 
 
 ## :heavy_check_mark: 프로젝트 소개
-![1](https://github.com/user-attachments/assets/a528f907-0184-4b8a-a8bf-7bf1f52500f1)
-![3](https://github.com/user-attachments/assets/b4693b43-d8d4-42e9-bb7c-63ca7efecfe6)
-![4](https://github.com/user-attachments/assets/4336a19f-b4cc-4995-9bc7-c8307096d278)
-![5](https://github.com/user-attachments/assets/2edebcbd-5549-417c-bf99-659d8fbf23ab)
-![6](https://github.com/user-attachments/assets/9ed63f83-bcac-4fab-80e8-e3fc6d1c9f41)
-![9](https://github.com/user-attachments/assets/0f62df06-d7ad-48f9-a6e6-13e663cf0e43)
-![10](https://github.com/user-attachments/assets/c8dc8c76-e102-4073-992f-71c8dcb009c6)
-![12](https://github.com/user-attachments/assets/f655fb9d-2ffd-4032-a51e-a5c71416d50c)
 
+<img width="1710" height="970" alt="image" src="https://github.com/user-attachments/assets/18e1d245-7750-4bb8-b812-e60c05f52771" />
+<img width="1712" height="968" alt="image" src="https://github.com/user-attachments/assets/d21563d3-872f-40c3-b605-821738af7489" />
+<img width="1708" height="964" alt="image" src="https://github.com/user-attachments/assets/b433d578-3cbd-439c-b7e5-7719ee3d5986" />
+<img width="1710" height="968" alt="image" src="https://github.com/user-attachments/assets/3c110d37-f29f-43ea-ba0f-66956c973f7b" />
+<img width="1712" height="966" alt="image" src="https://github.com/user-attachments/assets/9dc4497b-cbe3-4fbc-9748-b62e4384bd71" />
+<img width="1710" height="968" alt="image" src="https://github.com/user-attachments/assets/1c437d90-3a0f-4a9d-ae0c-1d501642d92a" />
+<img width="1712" height="968" alt="image" src="https://github.com/user-attachments/assets/78342450-e0a9-47c2-bd5a-a0e9c89369d0" />
+<img width="1714" height="962" alt="image" src="https://github.com/user-attachments/assets/a58f2159-6bc4-43de-8b98-d2e156d1a53d" />
 
 
 ## :smile: 팀원
